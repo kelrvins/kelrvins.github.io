@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ife -mission 4</title>
+    <meta charset="UTF-8">
+    <style>
+        li {
+            list-style: none;
+            float: left;
+            margin: 0.1rem 0.2rem 0 0;
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            font-size: 1.3rem;
+            text-align: center;
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="type-in" id="source" />
+        <input type="button" name="insert-left" id="insert-left" value="左侧入" />
+        <input type="button" name="insert-left" id="insert-right" value="右侧入" />
+        <input type="button" name="insert-left" id="out-left" value="左侧出" />
+        <input type="button" name="insert-left" id="out-right" value="右侧出" />
+    </div>
+    <div>
+        <ul id="sorts"></ul>
+    </div>
+    <script>
+        let data = [5, 12, 5];
+
+        let source = document.getElementById("source");
+        let inLef = document.getElementById("insert-left");
+        let inRig = document.getElementById("insert-right");
+        let outLef = document.getElementById("out-left");
+        let outRig = document.getElementById("out-right");
+        let sorts = document.getElementById("sorts");
+
+        function render() {
+            console.log(data);
+            removeAllChild(sorts);
+            for (let i = 0; i < data.length; i++) {
+                const cont = document.createElement('li');
+                cont.innerHTML = data[i];
+                console.log(cont);
+                sorts.appendChild(cont);
+            }
+        }
+
+        function removeAllChild(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild);
+            }
+        }
+
+        function init() {
+            render();
+            inLef.addEventListener("click", function () {
+                if (source.value.trim() != "") {
+                    data.unshift(source.value);
+                    source.value = "";
+                    source.focus();
+                    render();
+                }
+            }, false);
+            inRig.addEventListener("click", function () {
+                if (source.value.trim() != "") {
+                    data.push(source.value);
+                    source.value = "";
+                    source.focus();
+                    render();
+                }
+            }, false);
+            outLef.addEventListener("click", function () {
+                if (data.length > 0) {
+                    data.shift();
+                    render();
+                }
+            }, false);
+            outRig.addEventListener("click", function () {
+                if (data.length > 0) {
+                    data.pop();
+                    render();
+                }
+            }, false);
+
+        }
+        init();
+    </script>
+</body>
+
+</html>
