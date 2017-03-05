@@ -135,7 +135,6 @@
             }, false);
             outLef.addEventListener("click", function () {
                 if (data.length > 0) {
-                    data.shift();
                     notice.innerHTML = data.shift();
                     if (data.length < 40 && inLef.disabled) {
                         inLef.disabled = false;
@@ -146,7 +145,6 @@
             }, false);
             outRig.addEventListener("click", function () {
                 if (data.length > 0) {
-                    data.pop();
                     notice.innerHTML = data.pop();
                     if (data.length < 40 && inLef.disabled) {
                         inLef.disabled = false;
@@ -160,12 +158,14 @@
                 for (let i = 0; i < 40; i++) {
                     data[i] = parseInt(Math.random() * 90 + 10);
                 }
+                notice.innerHTML = "";
                 render();
             }, false);
             notice1.addEventListener("click", function () {
                 if (data.length > 1) {
                     resorts();
                 }
+                notice.innerHTML = "";
             }, false);
 
         }
