@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ife -mission 5</title>
+    <meta charset="UTF-8">
+    <style>
+        ul {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            height: 11rem;
+        }
+        
+        li {
+            list-style: none;
+            margin: 0.1rem 0.2rem 0 0;
+            width: 1.5rem;
+            min-height: 1rem;
+            text-align: center;
+            vertical-align: top;
+            color: #fff;
+            background: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="type-in" id="source" />
+        <input type="button" id="insert-left" value="左侧入" />
+        <input type="button" id="insert-right" value="右侧入" />
+        <input type="button" id="out-left" value="左侧出" />
+        <input type="button" id="out-right" value="右侧出" />
+        <input type="button" id="resorts" value="排序" />
+        <span id="notice"></span>
+    </div>
+    <div>
+        <ul id="sorts"></ul>
+
+    </div>
+    <script>
+        let data = [50, 20, 75, 45, 74, 78, 65, 68, 45, 63, 23, 14];
+
+        let source = document.getElementById("source");
+        let inLef = document.getElementById("insert-left");
+        let inRig = document.getElementById("insert-right");
+        let outLef = document.getElementById("out-left");
+        let outRig = document.getElementById("out-right");
+        let sorts = document.getElementById("sorts");
+        let notice1 = document.getElementById("resorts");
+
+        function render() {
+            console.log("t");
+            //console.log(data);
+            removeAllChild(sorts);
+            for (let i = 0; i < data.length; i++) {
+                const cont = document.createElement('li');
+                cont.innerHTML = data[i];
+                cont.style.height = data[i] / 10 + "rem";
+                //console.log(cont);
+                sorts.appendChild(cont);
+            }
+        }
+
+        function removeAllChild(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild);
+            }
+        }
+
+        function resorts() {
+            console.log("s");
+            var len = data.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - 1 - i; j++) {
+                    if (data[j] > data[j + 1]) {
+                        var temp = data[j + 1];
+                        data[j + 1] = data[j];
+                        data[j] = temp;
+                    }
+                }
+            }
+
+            render();
+            //data.sort();
+            // console.log(data);
+        }
+
+        function init() {
+            render();
+            source.addEventListener("mouseover", function () {
+                notice.innerHTML = "";
+                source.focus();
+            }, false);
+            inLef.addEventListener("click", function () {
+                if (parseInt(source.value.trim()) >= 1 && parseInt(source.value.trim()) <= 100) {
+                    data.unshift(source.value);
+                    if (data.length >= 40) {
+                        notice.innerHTML = "最多40个";
+                        inLef.disabled = true;
+                        inRig.disabled = true;
+                    }
+                } else {
+                    notice.innerHTML = "请正确输入10——100内数字";
+                }
+                source.value = "";
+                source.focus();
+                render();
+
+            }, false);
+            inRig.addEventListener("click", function () {
+                if (parseInt(source.value.trim()) >= 1 && parseInt(source.value.trim()) <= 100) {
+                    data.push(source.value);
+                    if (data.length >= 40) {
+                        notice.innerHTML = "最多40个";
+                        inLef.disabled = true;
+                        inRig.disabled = true;
+                    }
+                } else {
+                    notice.innerHTML = "请正确输入10——100内数字";
+                }
+                source.value = "";
+                source.focus();
+                render();
+            }, false);
+            outLef.addEventListener("click", function () {
+                if (data.length > 0) {
+                    data.shift();
+                    if (data.length < 40 && inLef.disabled) {
+                        inLef.disabled = false;
+                        inRig.disabled = false;
+                    }
+                    render();
+                }
+            }, false);
+            outRig.addEventListener("click", function () {
+                if (data.length > 0) {
+                    data.pop();
+                    if (data.length < 40 && inLef.disabled) {
+                        inLef.disabled = false;
+                        inRig.disabled = false;
+                    }
+                    render();
+                }
+            }, false);
+            notice1.addEventListener("click", function () {
+                if (data.length > 1) {
+                    resorts();
+                }
+            }, false);
+
+        }
+        init();
+    </script>
+</body>
+
+</html>
