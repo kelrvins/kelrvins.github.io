@@ -19,8 +19,7 @@
         }
         
         .blocks {
-            min-width: 20rem;
-            width: 50%;
+            text-align: center;
             margin: 0 auto;
         }
         
@@ -29,6 +28,7 @@
             border: 1px #aaa solid;
             border-radius: 5px;
             text-align: center;
+            font-size: 25px;
             margin: 0 auto;
         }
         
@@ -53,6 +53,10 @@
             padding: 0;
         }
         
+        .showli {
+            border: 1px #4473f7 solid;
+        }
+        
         li {
             display: inline-block;
             list-style: none;
@@ -63,6 +67,10 @@
             font-size: 1.3rem;
             border-radius: 5px;
             text-align: center;
+        }
+        
+        li span {
+            color: #f00;
         }
         
         #notice {
@@ -78,6 +86,7 @@
         .se-input {
             line-height: 1.9rem;
             border-radius: 2px;
+            padding-left: 10px;
             border: 1px #aaa solid;
         }
     </style>
@@ -85,9 +94,9 @@
 
 <body>
     <fieldset class="se-wrap">
-        <input type="text" name="" id="search" class="se-input" />
+        <input type="text" name="" id="searchText" class="se-input" />
         <input type="button" value="搜索" id="seBtn" class="se-btn" />
-        <input type="button" value="显示全部" id="showBtn" class="se-btn" />
+        <input type="button" value="重置" id="showBtn" class="se-btn" />
     </fieldset>
     <div class="clear blocks">
         <ul id="sorts" class="clear"></ul>
@@ -99,20 +108,23 @@
         <input type="button" name="out-right" id="out-right" value="右侧出" />
     </div>
     <textarea rows="10" cols="50" id="source"></textarea>
-    <p id="notice">asasd</p>
+    <p id="notice"></p>
     <script>
-        let data = [5, 12, 5];
-
-        let source = document.getElementById("source");
-        let inLef = document.getElementById("insert-left");
-        let inRig = document.getElementById("insert-right");
-        let outLef = document.getElementById("out-left");
-        let outRig = document.getElementById("out-right");
-        let sorts = document.getElementById("sorts");
-        let notice = document.getElementById("notice");
+        let data = [5, 12, 51],
+            sVa = [],
+            source = document.getElementById("source"),
+            inLef = document.getElementById("insert-left"),
+            inRig = document.getElementById("insert-right"),
+            outLef = document.getElementById("out-left"),
+            li = sorts.getElementsByTagName("li"),
+            outRig = document.getElementById("out-right"),
+            notice = document.getElementById("notice"),
+            searchText = document.getElementById("searchText"),
+            seBtn = document.getElementById("seBtn"),
+            showBtn = document.getElementById("showBtn");
 
         function render() {
-            console.log(data);
+            //console.log(data);
             removeAllChild(sorts);
             for (let i = 0; i < data.length; i++) {
                 const cont = document.createElement('li');
@@ -122,29 +134,67 @@
             }
         }
 
+        //染色
+        var coloring = function (seVa, sit) {
+            li[sit].innerHTML = li[sit].textContent.replace(seVa, "<span>" + seVa + "</span>");
+        }
+        //搜索
+        function searchItem() {
+            render();
+            console.log("###search###");
+            let seVa = searchText.value.trim().toLowerCase();
+            for (let i = 0; i < li.length; i++) {
+                if (li[i].textContent.toLowerCase().indexOf(seVa) !== -1) {
+                    li[i].className = "showli";
+                    // let sit=li[i].textContent.toLowerCase();
+                    coloring(seVa, i);
+                }
+            }
+        }
+
+        //移除所有子节点
         function removeAllChild(node) {
             while (node.hasChildNodes()) {
                 node.removeChild(node.lastChild);
             }
         }
 
+        //插入内容
+        var insertContent = function (path) {
+            if (source.value.trim() != "") {
+                sVa = source.value.trim().split(/-|,|，|、| |\n|\t/);
+                if (path == "left") {
+                    for (let i = sVa.length - 1; i >= 0; i--) {
+                        if (sVa[i] == "") continue;
+                        data.unshift(sVa[i]);
+                    }
+                } else {
+                    for (let i = 0; i < sVa.length; i++) {
+                        if (sVa[i] == "") continue;
+                        data.push(sVa[i]);
+                    }
+                }
+                source.value = "";
+                source.focus();
+                render();
+            } else {
+                notice.innerHTML = "空的.";
+            }
+        }
+
         function init() {
             render();
+            //重置提示信息
+            source.addEventListener("mouseover", function () {
+                notice.innerHTML = "";
+                source.focus();
+            }, false);
+            //添加按钮事件
             inLef.addEventListener("click", function () {
-                if (source.value.trim() != "") {
-                    data.unshift(source.value);
-                    source.value = "";
-                    source.focus();
-                    render();
-                }
+                insertContent("left");
             }, false);
             inRig.addEventListener("click", function () {
-                if (source.value.trim() != "") {
-                    data.push(source.value);
-                    source.value = "";
-                    source.focus();
-                    render();
-                }
+                insertContent("right");
             }, false);
             outLef.addEventListener("click", function () {
                 if (data.length > 0) {
@@ -162,7 +212,12 @@
                     notice.innerHTML = "空了。";
                 }
             }, false);
-
+            seBtn.addEventListener("click", function () {
+                searchItem();
+            }, false);
+            showBtn.addEventListener("click", function () {
+                render();
+            }, false);
         }
         init();
     </script>
