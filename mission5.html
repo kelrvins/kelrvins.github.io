@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div>
+    <fieldset>
         <input type="text" name="type-in" id="source" />
         <input type="button" id="insert-left" value="左侧入" />
         <input type="button" id="insert-right" value="右侧入" />
@@ -35,7 +35,7 @@
         <input type="button" id="randomNum" value="随机40个数" />
         <input type="button" id="resorts" value="排序" />
         <span id="notice"></span>
-    </div>
+    </fieldset>
     <div>
         <ul id="sorts"></ul>
 
@@ -165,6 +165,8 @@
                 if (data.length > 1) {
                     resorts();
                 }
+                let fieldset=document.getElementsByName("fieldset");
+                fieldset.disabled=true;
                 notice.innerHTML = "";
             }, false);
 
