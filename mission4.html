@@ -114,6 +114,7 @@
             }
         }
 
+
         function init() {
             render();
             inLef.addEventListener("click", function () {
@@ -152,11 +153,12 @@
                     render();
                 }
             }, false);
-            sorts.addEventListener('click',function(e){
-				if(e.target.nodeName == 'LI'){
-					sorts.removeChild(e.target);
-				}
-			})
+            sorts.addEventListener('click', function (e) {
+                   var whoClick= [].indexOf.call(lis, e.target);
+                   console.log(whoClick);
+                   data.splice(whoClick,1);
+                   render();
+            })
 
         }
         init();
