@@ -50,6 +50,7 @@
         #sorts {
             text-align: center;
             padding: 0;
+            min-height: 45px;
         }
         
         li {
@@ -63,7 +64,8 @@
             border-radius: 5px;
             text-align: center;
         }
-        #notice{
+        
+        #notice {
             color: #f00;
             font-size: 20px;
             text-align: center;
@@ -82,17 +84,18 @@
         <input type="button" name="insert-left" id="out-right" value="右侧出" />
     </div>
     <textarea rows="10" cols="50" id="source"></textarea>
-    <p id="notice">asasd</p>
+    <p id="notice"></p>
     <script>
         let data = [5, 12, 5];
 
-        let source = document.getElementById("source");
-        let inLef = document.getElementById("insert-left");
-        let inRig = document.getElementById("insert-right");
-        let outLef = document.getElementById("out-left");
-        let outRig = document.getElementById("out-right");
-        let sorts = document.getElementById("sorts");
-        let notice = document.getElementById("notice");
+        let source = document.getElementById("source"),
+            inLef = document.getElementById("insert-left"),
+            inRig = document.getElementById("insert-right"),
+            outLef = document.getElementById("out-left"),
+            outRig = document.getElementById("out-right"),
+            sorts = document.getElementById("sorts"),
+            lis = document.getElementsByTagName("li"),
+            notice = document.getElementById("notice");
 
         function render() {
             console.log(data);
@@ -119,6 +122,8 @@
                     source.value = "";
                     source.focus();
                     render();
+                } else {
+                    notice.innerHTML = "请正确输入";
                 }
             }, false);
             inRig.addEventListener("click", function () {
@@ -127,27 +132,31 @@
                     source.value = "";
                     source.focus();
                     render();
+                } else {
+                    notice.innerHTML = "请正确输入";
                 }
             }, false);
             outLef.addEventListener("click", function () {
-                if (data.length > 0) {
+                if (data.length - 1 < 0) {
+                    notice.innerHTML = "空了。";
+                } else {
                     data.shift();
                     render();
-                }else
-                {
-                    notice.innerHTML="空了。";
                 }
             }, false);
             outRig.addEventListener("click", function () {
-                if (data.length > 0) {
+                if (data.length - 1 < 0) {
+                    notice.innerHTML = "空了。";
+                } else {
                     data.pop();
                     render();
                 }
-                else
-                {
-                    notice.innerHTML="空了。";
-                }
             }, false);
+            sorts.addEventListener('click',function(e){
+				if(e.target.nodeName == 'LI'){
+					sorts.removeChild(e.target);
+				}
+			})
 
         }
         init();

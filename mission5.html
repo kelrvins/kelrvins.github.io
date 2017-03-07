@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>ife -mission 5</title>
+    <title>ife-mission 5</title>
     <meta charset="UTF-8">
     <style>
         ul {
@@ -22,18 +22,38 @@
             color: #fff;
             background: #f00;
         }
+                .buttons input,
+        .se-btn {
+            background: #fff;
+            width: 70px;
+            line-height: 30px;
+            border: 1px #aaa solid;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px #ddd;
+            cursor: pointer;
+        }
+        .se-wrap {
+            text-align: center;
+        }
+        
+        .se-input {
+            line-height: 1.9rem;
+            border-radius: 2px;
+            padding-left: 10px;
+            border: 1px #aaa solid;
+        }
     </style>
 </head>
 
 <body>
-    <fieldset>
-        <input type="text" name="type-in" id="source" />
-        <input type="button" id="insert-left" value="左侧入" />
-        <input type="button" id="insert-right" value="右侧入" />
-        <input type="button" id="out-left" value="左侧出" />
-        <input type="button" id="out-right" value="右侧出" />
-        <input type="button" id="randomNum" value="随机40个数" />
-        <input type="button" id="resorts" value="排序" />
+    <fieldset class="se-wrap">
+        <input type="text" name="type-in" id="source"  class="se-input"/>
+        <input type="button"  class="se-btn" id="insert-left" value="左侧入" />
+        <input type="button"  class="se-btn" id="insert-right" value="右侧入" />
+        <input type="button"  class="se-btn" id="out-left" value="左侧出" />
+        <input type="button"  class="se-btn" id="out-right" value="右侧出" />
+        <input type="button"  class="se-btn" id="randomNum" value="随机40个数" />
+        <input type="button"  class="se-btn" id="resorts" value="排序" />
         <span id="notice"></span>
     </fieldset>
     <div>
