@@ -93,6 +93,7 @@
 </head>
 
 <body>
+
     <fieldset class="se-wrap">
         <input type="text" name="" id="searchText" class="se-input" />
         <input type="button" value="搜索" id="seBtn" class="se-btn" />
@@ -111,7 +112,6 @@
     <p id="notice"></p>
     <script>
         let data = [5, 12, 51],
-            sVa = [],
             source = document.getElementById("source"),
             inLef = document.getElementById("insert-left"),
             inRig = document.getElementById("insert-right"),
@@ -124,8 +124,7 @@
             showBtn = document.getElementById("showBtn");
 
         function render() {
-            //console.log(data);
-            removeAllChild(sorts);
+            removeAllChild(sorts); //移除所有子节点
             for (let i = 0; i < data.length; i++) {
                 const cont = document.createElement('li');
                 cont.innerHTML = data[i];
@@ -134,11 +133,6 @@
             }
         }
 
-        //染色
-        var coloring = function (seVa, sit) {
-            li[sit].innerHTML = li[sit].textContent.replace(seVa, "<span>" + seVa + "</span>");
-        }
-        
         //搜索
         function searchItem() {
             render();
@@ -146,9 +140,11 @@
             let seVa = searchText.value.trim().toLowerCase();
             for (let i = 0; i < li.length; i++) {
                 if (li[i].textContent.toLowerCase().indexOf(seVa) !== -1) {
+                     let s2= "<span>" + seVa + "</span>";
+                    //边框染色
                     li[i].className = "showli";
-                    // let sit=li[i].textContent.toLowerCase();
-                    coloring(seVa, i);
+                    //文字染色
+                    li[i].innerHTML = li[i].textContent.replace(new RegExp(seVa,'gm'),"<span>" + seVa + "</span>")
                 }
             }
         }
