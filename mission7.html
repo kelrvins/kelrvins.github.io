@@ -75,7 +75,6 @@
         <input type="button" value="先序遍历" id="pre" />
         <input type="button" value="中序遍历" id="inp" />
         <input type="button" value="后序遍历" id="post" />
-        <!--<input type="button" value="重置" id="resets" />-->
     </fieldset>
 </body>
 <script>
@@ -87,7 +86,7 @@
         inputs = document.getElementsByTagName("input"),
         node = document.getElementsByTagName("div"),
         data = [];
-
+    //设置按钮不可用
     function setDisabledT() {
         console.log("setT");
         for (let i = 0; i < inputs.length; i++) {
@@ -95,6 +94,7 @@
         }
     }
 
+    //设置按钮可用
     function setDisabledF() {
         console.log("setF");
         for (let i = 0; i < inputs.length; i++) {
@@ -102,32 +102,24 @@
         }
     }
 
+    //重置颜色和数组
     function resets() {
         data = [];
-        let i = 0;
-        let time = setInterval(function () {
-            if (i < data.length) {
-                console.log("resets");
-                data[i].style.backgroundColor = '#fff'
-                i++
-            } else {
-                setDisabledF();
-                clearInterval(time)
-            }
-        }, 10);
     }
-
+    //染色
     function coloring() {
         setDisabledT();
-        let i = 0;
+        let i = 1;
         console.log(data.length);
+        data[0].style.backgroundColor = '#f00'
         var time = setInterval(function () {
             if (i < data.length) {
-
+                data[i - 1].style.backgroundColor = '#fff'
                 console.log("color");
-                data[i].style.backgroundColor = '#f55b73'
+                data[i].style.backgroundColor = '#f00'
                 i++
             } else {
+                data[i - 1].style.backgroundColor = '#fff'
                 setDisabledF();
                 clearInterval(time)
             }
@@ -174,10 +166,6 @@
             postOrder(btWrap);
             coloring();
         });
-        // resets.addEventListener("click", function () {
-        // setDisabledT();
-        //     resets();
-        // });
     }
     init();
 </script>
