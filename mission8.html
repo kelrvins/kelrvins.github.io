@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ife-mission 7</title>
+    <title>ife-mission 8</title>
     <style>
         .BTWrap {
             border: 1px #000 solid;
-            width: 50%;
+            width: 60%;
             height: 20rem;
             margin: 0 auto;
             display: flex;
@@ -45,29 +45,28 @@
             margin: 1rem 0;
             text-align: center
         }
+        
+        #seInput {
+            width: 10rem;
+            padding-left: 5px;
+            box-shadow: none;
+        }
     </style>
 </head>
 
 <body>
-    <div class="BTWrap" id="btWrap">
-        <div>
-            <div>
-                <div></div>
-                <div></div>
+    <div class="BTWrap" id="btWrap">测试<div>手机<div>苹果<div>安卓</div>
+                <div>垃圾</div>
             </div>
-            <div>
-                <div></div>
-                <div></div>
+            <div>123<div>什么</div>
+                <div>啊</div>
             </div>
         </div>
-        <div>
-            <div>
-                <div></div>
-                <div></div>
+        <div>嗯<div>哦<div>的</div>
+                <div>热</div>
             </div>
-            <div>
-                <div></div>
-                <div></div>
+            <div>是<div>去</div>
+                <div>他</div>
             </div>
         </div>
     </div>
@@ -75,17 +74,22 @@
         <input type="button" value="先序遍历" id="pre" />
         <input type="button" value="中序遍历" id="inp" />
         <input type="button" value="后序遍历" id="post" />
+        <input type="text" id="seInput" placeholder=" 搜点啥......" />
+        <input type="button" value="搜索" id="seBtn" />
     </fieldset>
 </body>
 <script>
     let btWrap = document.getElementById("btWrap"),
-
         inp = document.getElementById("inp"),
         post = document.getElementById("post"),
         pre = document.getElementById("pre"),
+        seInput = document.getElementById("seInput"),
+        seBtn = document.getElementById("seBtn"),
         inputs = document.getElementsByTagName("input"),
         node = document.getElementsByTagName("div"),
-        data = [];
+        spans = document.getElementsByTagName("span"),
+        data = [],
+        arr = [];
     //设置按钮不可用
     function setDisabledT() {
         console.log("setT");
@@ -105,6 +109,7 @@
     //重置颜色和数组
     function resets() {
         data = [];
+        arr=[];
     }
     //染色
     function coloring() {
@@ -112,18 +117,34 @@
         let i = 1;
         console.log(data.length);
         data[0].style.backgroundColor = '#f00'
-        data[0].style.color = '#fff'
         var time = setInterval(function () {
             if (i < data.length) {
                 data[i - 1].style.backgroundColor = '#fff'
-                data[i - 1].style.color = '#000'
                 console.log("color");
                 data[i].style.backgroundColor = '#f00'
-        data[i].style.color = '#fff'
                 i++
             } else {
                 data[i - 1].style.backgroundColor = '#fff'
-        data[i-1].style.color = '#fff'
+                setDisabledF();
+                clearInterval(time)
+            }
+        }, 200)
+    }
+    //染色
+    function Scoloring(a) {
+        setDisabledT();
+        for(let i=0;i<data.length;i++){
+            data[i].style.backgroundColor = '#fff'
+        }
+        let i = 1;
+        data[0].style.backgroundColor = '#f00'
+        var time = setInterval(function () {
+            if (i < a+1) {
+                data[i - 1].style.backgroundColor = '#fff'
+                data[i].style.backgroundColor = '#f00'
+                i++
+            } else {
+                //data[i - 1].style.backgroundColor = '#fff'
                 setDisabledF();
                 clearInterval(time)
             }
@@ -154,6 +175,26 @@
         }
     }
 
+    //将节点内容存入数组
+    function arrOrder(x) {
+        if (!(x == null)) {
+            console.log(x.firstChild.nodeValue);
+            arr.push(x.firstChild.nodeValue)
+            arrOrder(x.firstElementChild)
+            arrOrder(x.lastElementChild)
+        }
+    }
+    //搜索字符串
+    function searchArr(et){
+        let flag=-1
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]==et){
+                flag=i
+                continue
+            }
+        }
+        return flag
+    }
     function init() {
         pre.addEventListener("click", function () {
             resets();
@@ -169,6 +210,24 @@
             resets();
             postOrder(btWrap);
             coloring();
+        });
+        seBtn.addEventListener("click", function () {
+            resets();
+            PreOrder(btWrap);
+            arrOrder(btWrap);
+            if (seInput.value.trim() !== "") {
+                console.log("###000");
+                seText = seInput.value.trim();
+                console.log("###"+seText);
+                let a=searchArr(seText)
+                console.log("####"+a);
+                if(a!= -1){
+                    Scoloring(a);
+                }
+            } else {
+                seInput.placeholder = "请先输入";
+            }
+            //coloring();
         });
     }
     init();
