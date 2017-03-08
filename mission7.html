@@ -12,10 +12,10 @@
             width: 50%;
             height: 20rem;
             margin: 0 auto;
-            
             display: flex;
             padding: 20px;
             align-items: center;
+            background: #fff;
         }
         
         .BTWrap div {
@@ -25,13 +25,31 @@
             border: 1px #aaa solid;
             height: 90%;
             flex-grow: 1;
+            background: #fff;
             margin: 0 10px;
+            border-radius: 3px;
+        }
+        
+        input {
+            background: #fff;
+            width: 70px;
+            line-height: 30px;
+            border: 1px #aaa solid;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px #ddd;
+            margin: 0 1rem;
+            border-radius: 3px;
+        }
+        
+        fieldset {
+            margin: 1rem 0;
+            text-align: center
         }
     </style>
 </head>
 
 <body>
-    <div class="BTWrap">
+    <div class="BTWrap" id="btWrap">
         <div>
             <div>
                 <div></div>
@@ -53,6 +71,115 @@
             </div>
         </div>
     </div>
+    <fieldset>
+        <input type="button" value="先序遍历" id="pre" />
+        <input type="button" value="中序遍历" id="inp" />
+        <input type="button" value="后序遍历" id="post" />
+        <!--<input type="button" value="重置" id="resets" />-->
+    </fieldset>
 </body>
+<script>
+    let btWrap = document.getElementById("btWrap"),
+
+        inp = document.getElementById("inp"),
+        post = document.getElementById("post"),
+        pre = document.getElementById("pre"),
+        inputs = document.getElementsByTagName("input"),
+        node = document.getElementsByTagName("div"),
+        data = [];
+
+    function setDisabledT() {
+        console.log("setT");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = "disabled";
+        }
+    }
+
+    function setDisabledF() {
+        console.log("setF");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute('disabled');
+        }
+    }
+
+    function resets() {
+        data = [];
+        let i = 0;
+        let time = setInterval(function () {
+            if (i < data.length) {
+                console.log("resets");
+                data[i].style.backgroundColor = '#fff'
+                i++
+            } else {
+                setDisabledF();
+                clearInterval(time)
+            }
+        }, 10);
+    }
+
+    function coloring() {
+        setDisabledT();
+        let i = 0;
+        console.log(data.length);
+        var time = setInterval(function () {
+            if (i < data.length) {
+
+                console.log("color");
+                data[i].style.backgroundColor = '#f55b73'
+                i++
+            } else {
+                setDisabledF();
+                clearInterval(time)
+            }
+        }, 100)
+    }
+    //前序
+    function PreOrder(x) {
+        if (!(x == null)) {
+            data.push(x)
+            PreOrder(x.firstElementChild)
+            PreOrder(x.lastElementChild)
+        }
+    }
+    //中序
+    function inOrder(x) {
+        if (!(x == null)) {
+            inOrder(x.firstElementChild)
+            data.push(x)
+            inOrder(x.lastElementChild)
+        }
+    }
+    //后序
+    function postOrder(x) {
+        if (!(x == null)) {
+            postOrder(x.firstElementChild)
+            postOrder(x.lastElementChild)
+            data.push(x)
+        }
+    }
+
+    function init() {
+        pre.addEventListener("click", function () {
+            resets();
+            PreOrder(btWrap);
+            coloring();
+        });
+        inp.addEventListener("click", function () {
+            resets();
+            inOrder(btWrap);
+            coloring();
+        });
+        post.addEventListener("click", function () {
+            resets();
+            postOrder(btWrap);
+            coloring();
+        });
+        // resets.addEventListener("click", function () {
+        // setDisabledT();
+        //     resets();
+        // });
+    }
+    init();
+</script>
 
 </html>
