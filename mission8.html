@@ -68,10 +68,11 @@
                 <div>他</div>
             </div>
         </div>
+         <div>2</div>
     </div>
     <fieldset>
         <input type="button" value="先序遍历" id="pre" />
-        <input type="button" value="中序遍历" id="inp" />
+        <!--<input type="button" value="中序遍历" id="inp" />-->
         <input type="button" value="后序遍历" id="post" />
         <input type="text" id="seInput" placeholder=" 搜点啥......" />
         <input type="button" value="搜索" id="seBtn" />
@@ -89,17 +90,15 @@
         spans = document.getElementsByTagName("span"),
         data = [],
         arr = [];
-    //设置按钮不可用
+    //设置输入和按钮不可用
     function setDisabledT() {
-        console.log("setT");
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].disabled = "disabled";
         }
     }
 
-    //设置按钮可用
+    //设置输入和按钮可用
     function setDisabledF() {
-        console.log("setF");
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].removeAttribute('disabled');
         }
@@ -114,12 +113,10 @@
     function coloring() {
         setDisabledT();
         let i = 1;
-        console.log(data.length);
         data[0].style.backgroundColor = '#f00'
         var time = setInterval(function () {
             if (i < data.length) {
                 data[i - 1].style.backgroundColor = '#fff'
-                console.log("color");
                 data[i].style.backgroundColor = '#f00'
                 i++
             } else {
@@ -129,7 +126,7 @@
             }
         }, 200)
     }
-    //染色
+    //搜索染色
     function Scoloring(a) {
         setDisabledT();
         for(let i=0;i<data.length;i++){
@@ -143,7 +140,6 @@
                 data[i].style.backgroundColor = '#f00'
                 i++
             } else {
-                //data[i - 1].style.backgroundColor = '#fff'
                 setDisabledF();
                 clearInterval(time)
             }
@@ -151,10 +147,17 @@
     }
     //前序
     function PreOrder(x) {
-        if (!(x == null)) {
-            data.push(x)
-            PreOrder(x.firstElementChild)
-            PreOrder(x.lastElementChild)
+        var i;
+        if(x != null){
+            data.push(x);
+            var length = x.children.length;
+            if(length > 0){
+                for(i = 0; i < length; i++){
+                    if(x.children[i].nodeType == 1){
+                        PreOrder(x.children[i]);
+                    }
+                }
+            }
         }
     }
     //中序
@@ -167,10 +170,21 @@
     }
     //后序
     function postOrder(x) {
-        if (!(x == null)) {
-            postOrder(x.firstElementChild)
-            postOrder(x.lastElementChild)
-            data.push(x)
+       var i;
+        if(x != null){
+            //list.push(node);
+            var length =x.children.length;
+            if(length == 0){
+                data.push(x);
+            }
+            if(length > 0){
+                for(i = 0; i < length; i++){
+                    if(x.children[i].nodeType == 1){
+                        postOrder(x.children[i]);
+                        
+                    }
+                }data.push(x);
+            }
         }
     }
 
@@ -200,11 +214,11 @@
             PreOrder(btWrap);
             coloring();
         });
-        inp.addEventListener("click", function () {
-            resets();
-            inOrder(btWrap);
-            coloring();
-        });
+        // inp.addEventListener("click", function () {
+        //     resets();
+        //     inOrder(btWrap);
+        //     coloring();
+        // });
         post.addEventListener("click", function () {
             resets();
             postOrder(btWrap);
@@ -215,18 +229,14 @@
             PreOrder(btWrap);
             arrOrder(btWrap);
             if (seInput.value.trim() !== "") {
-                console.log("###000");
                 seText = seInput.value.trim();
-                console.log("###"+seText);
                 let a=searchArr(seText)
-                console.log("####"+a);
                 if(a!= -1){
                     Scoloring(a);
                 }
             } else {
                 seInput.placeholder = "请先输入";
             }
-            //coloring();
         });
     }
     init();
