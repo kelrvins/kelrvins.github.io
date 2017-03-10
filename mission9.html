@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ife-mission 8</title>
+    <title>ife-mission 9</title>
     <style>
         .BTWrap {
             border: 1px #000 solid;
@@ -78,6 +78,8 @@
         <div>2</div>
     </div>
     <fieldset>
+        <input type="button" value="删除" id="delNode" />
+        <input type="button" value="插入" id="insNode" />
         <input type="button" value="先序遍历" id="pre" />
         <!--<input type="button" value="中序遍历" id="inp" />-->
         <input type="button" value="后序遍历" id="post" />
@@ -87,7 +89,8 @@
 </body>
 <script>
     let btWrap = document.getElementById("btWrap"),
-        inp = document.getElementById("inp"),
+        delNode = document.getElementById("delNode"),
+        insNode = document.getElementById("insNode"),
         post = document.getElementById("post"),
         pre = document.getElementById("pre"),
         seInput = document.getElementById("seInput"),
