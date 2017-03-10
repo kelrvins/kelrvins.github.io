@@ -294,6 +294,8 @@
         delNode.addEventListener('click', function () {
             whoClick.parentNode.removeChild(whoClick);
             delNode.disabled = "disabled";
+        insInput.disabled = "disabled";
+        insNode.disabled = "disabled";
         });
         insNode.addEventListener('click', function () {
             let insI = insInput.value.trim();
