@@ -123,7 +123,7 @@
                 source.focus();
             }, false);
             inLef.addEventListener("click", function () {
-                if (parseInt(source.value.trim()) >= 1 && parseInt(source.value.trim()) <= 100) {
+                if (parseInt(source.value.trim()) >= 10 && parseInt(source.value.trim()) <= 100) {
                     data.unshift(source.value);
                     if (data.length >= 40) {
                         notice.innerHTML = "最多40个";
@@ -139,7 +139,7 @@
 
             }, false);
             inRig.addEventListener("click", function () {
-                if (parseInt(source.value.trim()) >= 1 && parseInt(source.value.trim()) <= 100) {
+                if (parseInt(source.value.trim()) >= 10 && parseInt(source.value.trim()) <= 100) {
                     data.push(source.value);
                     if (data.length >= 40) {
                         notice.innerHTML = "最多40个";
