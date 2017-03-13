@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ife mission 10 </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .clear:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clear {
+            /* 触发 hasLayout */
+            zoom: 1;
+        }
+        
+        .wrap {
+            width: 50%;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        
+        .wrap-block {
+            min-height: 58px;
+            margin: 10px 0;
+        }
+        
+        .input-T {
+            font: 400 1.2rem '微软雅黑';
+            line-height: 35px;
+            text-align: right;
+        }
+        
+        .inputText {
+            width: 100%;
+            line-height: 35px;
+            padding-left: 20px;
+            border-radius: 2px;
+            border: 1px #aaa solid;
+        }
+        
+        .show-red {
+            border: 1px #f00 solid;
+        }
+        
+        .show-green {
+            border: 1px solid rgb(9, 199, 59);
+        }
+        
+        #checkT {
+            line-height: 35px;
+            border: none;
+            background-color: #126bc7;
+            padding: 2px 18px;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+        
+        .show-notice {
+            text-align: left;
+            color: #888;
+            display: none;
+        }
+        .show-notice-bl {
+            text-align: left;
+            color: #888;
+            display: block;
+        }
+        
+        .input-Title {
+            width: 20%;
+            float: left;
+        }
+        
+        .inputTexts {
+            width: 75%;
+            text-align: left;
+            float: left;
+            padding-left: 20px;
+        }
+        
+        .input-button {
+            text-align: right;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap clear" id="wrap">
+        <div class="clear">
+            <div class="wrap-block clear clear">
+                <div class="input-Title">
+                    <p class="input-T">名称</p>
+                </div>
+                <div class="inputTexts">
+                    <input type="text" id="inputName" class="inputText" />
+                    <p class="show-notice" id="NoticeName">必填，长度为4-16个字符</p>
+                </div>
+            </div>
+            <div class="wrap-block clear">
+                <div class="input-Title">
+                    <p class="input-T">密码</p>
+                </div>
+                <div class="inputTexts">
+                    <input type="password" id="inputPwd" class="inputText" />
+                    <p class="show-notice" id="NoticePw">必填，长度为6-12个字符</p>
+                </div>
+            </div>
+            <div class="wrap-block clear">
+                <div class="input-Title">
+                    <p class="input-T">密码确认</p>
+                </div>
+                <div class="inputTexts">
+                    <input type="password" id="inputRpwd" class="inputText" />
+                    <p class="show-notice" id="NoticeRepwd">再次输入相同密码</p>
+                </div>
+            </div>
+            <div class="wrap-block clear">
+                <div class="input-Title">
+                    <p class="input-T">邮箱</p>
+                </div>
+                <div class="inputTexts">
+                    <input type="text" id="inputM" class="inputText" />
+                    <p class="show-notice" id="NoticeMail">必填</p>
+                </div>
+            </div>
+            <div class="wrap-block clear">
+                <div class="input-Title">
+                    <p class="input-T">手机</p>
+                </div>
+                <div class="inputTexts">
+                    <input type="text" id="inputPhone" class="inputText" />
+                    <p class="show-notice" id="NoticePhone">必填</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap clear ">
+        <div class="wrap-block clear">
+            <div class="input-Title">&nbsp;</div>
+            <div class="inputTexts input-button btn">
+                <input type="button" value="验证" id="checkT">
+            </div>
+        </div>
+    </div>
+    <script>
+        let inputName = document.getElementById('inputName'),
+            inputs = document.getElementsByTagName('input'),
+            inputPwd = document.getElementById('inputPwd'),
+            NoticePw = document.getElementById('NoticePw'),
+            Notices = document.getElementsByClassName('show-notice'),
+            inputRpwd = document.getElementById('inputRpwd'),
+            NoticeRepwd = document.getElementById('NoticeRepwd'),
+            inputM = document.getElementById('inputM'),
+            NoticeMail = document.getElementById('NoticeMail'),
+            inputPhone = document.getElementById('inputPhone'),
+            NoticePhone = document.getElementById('NoticePhone'),
+            NoticeName = document.getElementById('NoticeName'),
+            wrap = document.getElementById('wrap'),
+            btn = document.getElementById('checkT');
+
+        //获取input内value长度
+        let GetLength = function (str) {
+            return str.replace(/[\u0391-\uFFE5]/g, "aa").length;
+        }
+
+        //检车全部
+        let checkAll = function () {
+            if (checkPwd() && checkName() && checkRePwd() && checkMail() && checkPhone()) {
+                alert("全部通过");
+            } else {
+                alert("输入有误");
+                checkPwd();
+                checkName();
+                checkRePwd();
+                checkMail();
+                checkPhone();
+                let i;
+                for (i in Notices) {
+                    console.log(i);
+                    Notices[i].setAttribute("class","show-notice-bl");
+                }
+            }
+        }
+
+        //名称是否合格
+        let checkName = function () {
+            console.log("a");
+            let inputT = inputName.value.trim();
+            if (inputT == "") {
+                NoticeName.innerHTML = "名称不能为空";
+                NoticeName.style.color = "#f00";
+                inputName.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            } else if (GetLength(inputT) >= 4 && GetLength(inputT) <= 16) {
+                NoticeName.innerHTML = "名称格式正确";
+                NoticeName.style.color = " rgb(9, 199, 59)";
+                inputName.style.border = "1px #80d897 solid";
+                return true;
+            } else {
+                NoticeName.innerHTML = "长度为4-16个字符";
+                NoticeName.style.color = "#f00";
+                inputName.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            }
+        }
+
+        //密码是否合格
+        let checkPwd = function () {
+            console.log("p");
+            let inputT = inputPwd.value.trim();
+            if (inputT == "") {
+                NoticePw.innerHTML = "密码不能为空";
+                NoticePw.style.color = "#f00";
+                inputPwd.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            } else if (GetLength(inputT) >= 6 && GetLength(inputT) <= 12) {
+                NoticePw.innerHTML = "密码可用";
+                NoticePw.style.color = "rgb(9, 199, 59)";
+                inputPwd.style.border = "1px #80d897 solid";
+                return true;
+            } else {
+                NoticePw.innerHTML = "长度为6-12个字符";
+                NoticePw.style.color = "#f00";
+                inputPwd.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            }
+        }
+
+        //检查相同密码
+        let checkRePwd = function () {
+            let inputP = inputPwd.value.trim();
+            console.log("re");
+            let inputRp = inputRpwd.value.trim();
+            if (inputP === inputRp && inputRp != "") {
+                NoticeRepwd.innerHTML = "密码输入一致";
+                NoticeRepwd.style.color = "rgb(9, 199, 59)";
+                inputRpwd.style.border = "1px #80d897 solid";
+                return true;
+            } else {
+                NoticeRepwd.innerHTML = "密码不一致";
+                NoticeRepwd.style.color = "#f00";
+                inputRpwd.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            }
+        }
+
+        //检查邮箱
+        let checkMail = function () {
+            console.log("mail");
+            let inputMt = inputM.value.trim();
+            let myreg =
+                /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            if (myreg.test(inputMt)) {
+                NoticeMail.innerHTML = "邮箱可用";
+                NoticeMail.style.color = "rgb(9, 199, 59)";
+                inputM.style.border = "1px #80d897 solid";
+                return true;
+            } else {
+                NoticeMail.innerHTML = "格式错误";
+                NoticeMail.style.color = "#f00";
+                inputM.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            }
+        }
+        //检查手机号码
+        let checkPhone = function () {
+            console.log("phone");
+            let inputMt = inputPhone.value.trim();
+            let myreg = /^1[3|4|5|7|8]\d{9}$/;
+            if (myreg.test(inputMt)) {
+                NoticePhone.innerHTML = "号码可用";
+                NoticePhone.style.color = "rgb(9, 199, 59)";
+                inputPhone.style.border = "1px #80d897 solid";
+                return true;
+            } else {
+                NoticePhone.innerHTML = "格式错误";
+                NoticePhone.style.color = "#f00";
+                inputPhone.style.border = "1px solid rgb(208, 72, 72)";
+                return false;
+            }
+        }
+
+
+        function init() {
+            //捕捉鼠标事件
+            wrap.addEventListener("mouseover", function (e) {
+                let who = e.target;
+                who.focus();
+                who.parentNode.lastElementChild.style.display = "block";
+            }, false)
+            //验证名称
+            inputName.addEventListener("blur", function () {
+                checkName();
+            }, false)
+            //验证密码
+            inputPwd.addEventListener("blur", function () {
+                checkPwd();
+            }, false)
+            //严重重复密码
+            inputRpwd.addEventListener("input", function (e) {
+                checkRePwd();
+            }, false)
+            //验证邮箱
+            inputM.addEventListener("blur", function () {
+                checkMail();
+            }, false)
+            //验证手机号码
+            inputPhone.addEventListener("blur", function () {
+                checkPhone();
+            }, false)
+            //验证全部
+            btn.addEventListener("click", function () {
+                checkAll();
+            }, false);
+        }
+        init();
+    </script>
+</body>
+
+</html>
