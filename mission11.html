@@ -73,6 +73,7 @@
             color: #888;
             display: none;
         }
+        
         .show-notice-bl {
             text-align: left;
             color: #888;
@@ -192,17 +193,18 @@
                 checkRePwd();
                 checkMail();
                 checkPhone();
-                let i;
-                for (i in Notices) {
-                    console.log(i);
-                    Notices[i].setAttribute("class","show-notice-bl");
-                }
+                // let i;
+                // for (i in Notices) {
+                //     console.log(i);
+                //     Notices[i].setAttribute("class","show-notice-bl");
+                // }
             }
         }
 
         //名称是否合格
         let checkName = function () {
             console.log("a");
+            inputName.parentNode.lastElementChild.style.display = "block";
             let inputT = inputName.value.trim();
             if (inputT == "") {
                 NoticeName.innerHTML = "名称不能为空";
@@ -225,6 +227,7 @@
         //密码是否合格
         let checkPwd = function () {
             console.log("p");
+            inputPwd.parentNode.lastElementChild.style.display = "block";
             let inputT = inputPwd.value.trim();
             if (inputT == "") {
                 NoticePw.innerHTML = "密码不能为空";
@@ -246,6 +249,7 @@
 
         //检查相同密码
         let checkRePwd = function () {
+            inputRpwd.parentNode.lastElementChild.style.display = "block";
             let inputP = inputPwd.value.trim();
             console.log("re");
             let inputRp = inputRpwd.value.trim();
@@ -265,6 +269,7 @@
         //检查邮箱
         let checkMail = function () {
             console.log("mail");
+            inputM.parentNode.lastElementChild.style.display = "block";
             let inputMt = inputM.value.trim();
             let myreg =
                 /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
@@ -283,6 +288,7 @@
         //检查手机号码
         let checkPhone = function () {
             console.log("phone");
+            inputPhone.parentNode.lastElementChild.style.display = "block";
             let inputMt = inputPhone.value.trim();
             let myreg = /^1[3|4|5|7|8]\d{9}$/;
             if (myreg.test(inputMt)) {
