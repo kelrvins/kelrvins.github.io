@@ -315,6 +315,9 @@
                 checkPwd();
             }, false)
             //严重重复密码
+            inputRpwd.addEventListener("blur", function (e) {
+                checkRePwd();
+            }, false)
             inputRpwd.addEventListener("input", function (e) {
                 checkRePwd();
             }, false)
