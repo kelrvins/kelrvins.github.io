@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        ul.box {
+            list-style: none;
+            width: 500px;
+            height: 500px;
+            margin: 5rem auto;
+            border: 1px solid #aaa;
+        }
+        
+        #wrap {
+            text-align: center;
+            padding-bottom: 3rem;
+        }
+        
+        .box li {
+            float: left;
+            width: 50px;
+            height: 50px;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+        }
+        
+        .choice {
+            border: 1px solid #e40045;
+            background: #dc378a;
+        }
+        
+        .box:after {
+            content: "";
+            height: 0;
+            visibility: hidden;
+            clear: both;
+            display: block;
+        }
+        
+        .moveinput {
+            line-height: 33px;
+            border-radius: 3px;
+            border: 1px solid #aaa;
+            padding-left: 10px;
+        }
+        
+        .movebtn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #aaa;
+            background: #fff;
+            border-radius: 0.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul class="box" id="bigBox">
+
+        </ul>
+        <input type="text" id="moveType" class="moveinput">
+        <input type="button" value="执行" id="moveOrder" class="movebtn">
+    </div>
+    <script>
+        let bigBox = document.getElementById('bigBox'),
+            moveType = document.getElementById('moveType'),
+            moveOrder = document.getElementById('moveOrder'),
+            path = 0,
+            nowPostion = null,
+            post = 0;
+
+        //渲染   上0 右1 下2 左3
+        let moveE = function (pos, dir) {
+            console.log("pos: " + pos + " | dir: " + dir + " | path: " + path);
+            render();
+            post = pos;
+            nowPostion = document.getElementById(pos);
+            nowPostion.setAttribute('class', 'choice');
+            switch (dir) {
+                case 0:
+                    path = 0;
+                    nowPostion.style.borderTop = "9px solid #ff4900";
+                    break;
+                case 1:
+                    path = 1;
+                    nowPostion.style.borderRight = "9px solid #ff4900";
+                    break;
+                case 2:
+                    path = 2;
+                    nowPostion.style.borderBottom = "9px solid #ff4900";
+                    break;
+                case 3:
+                    path = 3;
+                    nowPostion.style.borderLeft = "9px solid #ff4900";
+                    break;
+            }
+        }
+        //画格子
+        let render = function () {
+            removeAllChilds(bigBox);
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    let lis = document.createElement('li');
+                    lis.id = i + "" + j;
+                    //console.log(i + "" + j);
+                    bigBox.appendChild(lis);
+                }
+            }
+        }
+        //画格子
+        let letGo = function (moveT) {
+            if (moveT == "up") {
+                console.log("up");
+                if (path == 0) {
+                    let p = parseInt(post) - 10;
+                    if (p < 10) {
+                        p = 0 + "" + p;
+                    }
+                    if (p / 10 > 0) {
+                        moveE(p, 0);
+                    }
+                } else {
+                    path = 0;
+                    console.log("turntop");
+                    nowPostion.style.borderTop = "9px solid #ff4900";
+                    nowPostion.style.borderRight = "none";
+                    nowPostion.style.borderLeft = "none";
+                    nowPostion.style.borderBottom = "none";
+                }
+            } else if (moveT == "right") {
+                console.log("right");
+                if (path == 1) {
+                    let p = parseInt(post) + 1;
+                    if (p < 10) {
+                        p = 0 + "" + p;
+                    }
+                    if (p <= 99) {
+                        moveE(p, 1);
+                    } else {
+                        console.log("p:" + p);
+                    }
+                } else {
+                    path = 1;
+                    console.log("turnright");
+                    nowPostion.style.borderRight = "9px solid #ff4900";
+                    nowPostion.style.borderTop = "none";
+                    nowPostion.style.borderLeft = "none";
+                    nowPostion.style.borderBottom = "none";
+                }
+            } else if (moveT == "bottom") {
+                console.log("bottom");
+                if (path == 2) {
+                    let p = parseInt(post) + 10;
+                    if (p / 10 < 10) {
+                        moveE(p, 2);
+                    }
+                } else {
+                    path = 2;
+                    console.log("turnbottom");
+                    nowPostion.style.borderBottom = "9px solid #ff4900";
+                    nowPostion.style.borderRight = "none";
+                    nowPostion.style.borderTop = "none";
+                    nowPostion.style.borderLeft = "none";
+                }
+            } else if (moveT == "left") {
+                console.log("left");
+                if (path == 3) {
+                    let p = parseInt(post) - 1;
+                    if (p < 10) {
+                        p = 0 + "" + p;
+                    }
+                    if (p >= 0) {
+                        moveE(p, 3);
+                    } else {
+                        console.log("p:" + p);
+                    }
+                } else {
+                    path = 3;
+                    console.log("turnleft");
+                    nowPostion.style.borderLeft = "9px solid #ff4900";
+                    nowPostion.style.borderRight = "none";
+                    nowPostion.style.borderTop = "none";
+                    nowPostion.style.borderBottom = "none";
+                }
+            } else {
+                console.log("else");
+                moveType.innerHTML = "";
+                moveType.placeholder = "请正确输入";
+            }
+        }
+        //删除所有子节点
+        function removeAllChilds(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild);
+            }
+        }
+
+        function init() {
+            render();
+            //初始化位置为 5 5,方向为上0 右1 下2 左3
+            moveE("55", 0);
+
+            //移动格子
+            moveOrder.addEventListener("click", function () {
+                let moveT = moveType.value.trim();
+                letGo(moveT);
+
+            }, false)
+        }
+        init();
+    </script>
+</body>
+
+</html>
