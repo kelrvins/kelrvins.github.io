@@ -117,80 +117,108 @@
             }
         }
         //画格子
-        let letGo = function (moveT) {
-            if (moveT == "up") {
-                console.log("up");
-                if (path == 0) {
-                    let p = parseInt(post) - 10;
-                    if (p < 10) {
-                        p = 0 + "" + p;
-                    }
-                    if (p / 10 > 0) {
-                        moveE(p, 0);
-                    }
-                } else {
-                    path = 0;
+        let setBorder = function (path) {
+            switch (path) {
+                case 0:
                     console.log("turntop");
                     nowPostion.style.borderTop = "9px solid #ff4900";
                     nowPostion.style.borderRight = "none";
                     nowPostion.style.borderLeft = "none";
                     nowPostion.style.borderBottom = "none";
-                }
-            } else if (moveT == "right") {
-                console.log("right");
-                if (path == 1) {
-                    let p = parseInt(post) + 1;
-                    if (p < 10) {
-                        p = 0 + "" + p;
-                    }
-                    if (p <= 99) {
-                        moveE(p, 1);
-                    } else {
-                        console.log("p:" + p);
-                    }
-                } else {
-                    path = 1;
+                    break;
+                case 1:
                     console.log("turnright");
                     nowPostion.style.borderRight = "9px solid #ff4900";
                     nowPostion.style.borderTop = "none";
                     nowPostion.style.borderLeft = "none";
                     nowPostion.style.borderBottom = "none";
-                }
-            } else if (moveT == "bottom") {
-                console.log("bottom");
-                if (path == 2) {
-                    let p = parseInt(post) + 10;
-                    if (p / 10 < 10) {
-                        moveE(p, 2);
-                    }
-                } else {
-                    path = 2;
+                    break;
+                case 2:
                     console.log("turnbottom");
                     nowPostion.style.borderBottom = "9px solid #ff4900";
                     nowPostion.style.borderRight = "none";
                     nowPostion.style.borderTop = "none";
                     nowPostion.style.borderLeft = "none";
-                }
-            } else if (moveT == "left") {
-                console.log("left");
-                if (path == 3) {
-                    let p = parseInt(post) - 1;
-                    if (p < 10) {
-                        p = 0 + "" + p;
-                    }
-                    if (p >= 0) {
-                        moveE(p, 3);
-                    } else {
-                        console.log("p:" + p);
-                    }
-                } else {
-                    path = 3;
+                    break;
+                case 3:
                     console.log("turnleft");
                     nowPostion.style.borderLeft = "9px solid #ff4900";
                     nowPostion.style.borderRight = "none";
                     nowPostion.style.borderTop = "none";
                     nowPostion.style.borderBottom = "none";
+                    break;
+            }
+        }
+        //画格子
+        let letGo = function (moveT) {
+            if (moveT == "GO") {
+                let p = 0;
+                switch (path) {
+                    case 0:
+                        p = parseInt(post) - 10;
+                        if (p < 10) {
+                            p = 0 + "" + p;
+                        }
+                        if (p / 10 > 0) {
+                            moveE(p, 0);
+                        }
+                        break;
+                    case 1:
+                        p = parseInt(post) + 1;
+                        if (p < 10) {
+                            p = 0 + "" + p;
+                        }
+                        if (p <= 99) {
+                            moveE(p, 1);
+                        } else {
+                            console.log("p:" + p);
+                        }
+                        break;
+                    case 2:
+                        p = parseInt(post) + 10;
+                        if (p / 10 < 10) {
+                            moveE(p, 2);
+                        } else {
+                            console.log("p:" + p);
+                        }
+                        break;
+                    case 3:
+                        p = parseInt(post) - 1;
+                        if (p < 10) {
+                            p = 0 + "" + p;
+                        }
+                        if (p >= 0) {
+                            moveE(p, 3);
+                        } else {
+                            console.log("p:" + p);
+                        }
+                        break;
                 }
+            } else if (moveT == "TUN LEF") {
+                if (path == 0) {
+                    path = 3;
+                } else {
+                    path = path - 1;
+                }
+                setBorder(path);
+            } else if (moveT == "TUN RIG") {
+                if (path == 3) {
+                    path = 0;
+                } else {
+                    path = path + 1;
+                }
+                setBorder(path);
+            } else if (moveT == "TUN BAC") {
+                if (path == 3) {
+                    path = 1;
+                } else if (path == 1) {
+                    path = 3;
+                } else if (path == 2) {
+                    path = 0;
+                } else if (path == 0) {
+                    path = 2;
+                }
+                setBorder(path);
             } else {
                 console.log("else");
                 moveType.innerHTML = "";
