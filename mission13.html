@@ -16,13 +16,15 @@
             list-style: none;
             width: 500px;
             height: 500px;
-            margin: 5rem auto;
             border: 1px solid #aaa;
         }
         
         #wrap {
             text-align: center;
             padding-bottom: 3rem;
+            margin: 5rem auto;
+            position: relative;
+            width: 500px;
         }
         
         .box li {
@@ -30,12 +32,8 @@
             width: 50px;
             height: 50px;
             box-sizing: border-box;
+            transition: .5s;
             border: 1px solid #aaa;
-        }
-        
-        .choice {
-            border: 1px solid #e40045;
-            background: #dc378a;
         }
         
         .box:after {
@@ -59,11 +57,23 @@
             background: #fff;
             border-radius: 0.2rem;
         }
+        
+        .moveBlock {
+            width: 50px;
+            height: 50px;
+            box-sizing: border-box;
+            background: #dc378a;
+            position: absolute;
+            border-top: 9px solid #ff4900;
+            transform: rotate(0deg);
+            transition: .5s;
+        }
     </style>
 </head>
 
 <body>
     <div id="wrap">
+        <div id="moveBlock" class="moveBlock"></div>
         <ul class="box" id="bigBox">
 
         </ul>
@@ -72,176 +82,125 @@
     </div>
     <script>
         let bigBox = document.getElementById('bigBox'),
+            moveBlock = document.getElementById('moveBlock'),
             moveType = document.getElementById('moveType'),
             moveOrder = document.getElementById('moveOrder'),
-            path = 0,
-            nowPostion = null,
-            post = 0;
+            path = 0, //方向
+            de = 0, //角度模
+            dege = 0, //角度
+            post=0,
+            leN=0,
+            toN=0;
 
         //渲染   上0 右1 下2 左3
-        let moveE = function (pos, dir) {
-            console.log("pos: " + pos + " | dir: " + dir + " | path: " + path);
-            render();
-            post = pos;
-            nowPostion = document.getElementById(pos);
-            nowPostion.setAttribute('class', 'choice');
-            switch (dir) {
-                case 0:
-                    path = 0;
-                    nowPostion.style.borderTop = "9px solid #ff4900";
-                    break;
-                case 1:
-                    path = 1;
-                    nowPostion.style.borderRight = "9px solid #ff4900";
-                    break;
-                case 2:
-                    path = 2;
-                    nowPostion.style.borderBottom = "9px solid #ff4900";
-                    break;
-                case 3:
-                    path = 3;
-                    nowPostion.style.borderLeft = "9px solid #ff4900";
-                    break;
-            }
+        let moveE = function (pos,path) {
+            post=pos;
+            console.log("位置: " + pos + " | 方向: " + path);
+            moveBlock.style.transform = 'rotate(' + dege + 'deg)';
+            leN=parseInt(pos/10)*50;
+            toN=parseInt(pos%10)*50;
+            console.log("left:" + leN);
+            console.log("top:" + toN);
+            moveBlock.style.left=parseInt(pos/10)*50+'px';
+            moveBlock.style.top=parseInt(pos%10)*50+'px';
         }
+
         //画格子
         let render = function () {
-            removeAllChilds(bigBox);
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
                     let lis = document.createElement('li');
                     lis.id = i + "" + j;
-                    //console.log(i + "" + j);
                     bigBox.appendChild(lis);
                 }
             }
         }
-        //画格子
-        let setBorder = function (path) {
-            switch (path) {
-                case 0:
-                    console.log("turntop");
-                    nowPostion.style.borderTop = "9px solid #ff4900";
-                    nowPostion.style.borderRight = "none";
-                    nowPostion.style.borderLeft = "none";
-                    nowPostion.style.borderBottom = "none";
-                    break;
-                case 1:
-                    console.log("turnright");
-                    nowPostion.style.borderRight = "9px solid #ff4900";
-                    nowPostion.style.borderTop = "none";
-                    nowPostion.style.borderLeft = "none";
-                    nowPostion.style.borderBottom = "none";
-                    break;
-                case 2:
-                    console.log("turnbottom");
-                    nowPostion.style.borderBottom = "9px solid #ff4900";
-                    nowPostion.style.borderRight = "none";
-                    nowPostion.style.borderTop = "none";
-                    nowPostion.style.borderLeft = "none";
-                    break;
-                case 3:
-                    console.log("turnleft");
-                    nowPostion.style.borderLeft = "9px solid #ff4900";
-                    nowPostion.style.borderRight = "none";
-                    nowPostion.style.borderTop = "none";
-                    nowPostion.style.borderBottom = "none";
-                    break;
-            }
-        }
+
         //画格子
         let letGo = function (moveT) {
             if (moveT == "GO") {
+                if (de == 90 || de == -270) {
+                    path = 1;
+                } else if (de == -90 || de == 270) {
+                    path = 3;
+                } else if (de == 0 || de == -0) {
+                    path = 0;
+                } else if (de == 180 || de == -180) {
+                    path = 2;
+                }
                 let p = 0;
                 switch (path) {
                     case 0:
-                        p = parseInt(post) - 10;
-                        if (p < 10) {
-                            p = 0 + "" + p;
-                        }
-                        if (p / 10 > 0) {
+                        p = parseInt(post) - 1;
+                        if (toN >= 50) {
                             moveE(p, 0);
+                        } else {
+                            p++;
+                            console.log("0p:" + p);
                         }
                         break;
                     case 1:
-                        p = parseInt(post) + 1;
+                        p = parseInt(post) + 10;
                         if (p < 10) {
                             p = 0 + "" + p;
                         }
                         if (p <= 99) {
                             moveE(p, 1);
                         } else {
-                            console.log("p:" + p);
+                            p -= 10;
+                            console.log("1p:" + p);
                         }
                         break;
                     case 2:
-                        p = parseInt(post) + 10;
-                        if (p / 10 < 10) {
+                        p = parseInt(post) +1;
+                        if (p %10 !=0) {
                             moveE(p, 2);
                         } else {
-                            console.log("p:" + p);
+                            p -= 1;
+                            console.log("2p:" + p);
                         }
                         break;
                     case 3:
-                        p = parseInt(post) - 1;
+                        p = parseInt(post) - 10;
                         if (p < 10) {
                             p = 0 + "" + p;
                         }
                         if (p >= 0) {
                             moveE(p, 3);
                         } else {
-                            console.log("p:" + p);
+                            p+=10;
+                            console.log("3p:" + p);
                         }
                         break;
                 }
             } else if (moveT == "TUN LEF") {
-                if (path == 0) {
-                    path = 3;
-                } else {
-                    path = path - 1;
-                }
-                setBorder(path);
+                moveBlock.style.transform = 'rotate(' + (dege -= 90) + 'deg)';
+                de = dege % 360;
+                console.log("%" + de);
             } else if (moveT == "TUN RIG") {
-                if (path == 3) {
-                    path = 0;
-                } else {
-                    path = path + 1;
-                }
-                setBorder(path);
+                moveBlock.style.transform = 'rotate(' + (dege += 90) + 'deg)';
+                de = dege % 360;
+                console.log("%" + de);
             } else if (moveT == "TUN BAC") {
-                if (path == 3) {
-                    path = 1;
-                } else if (path == 1) {
-                    path = 3;
-                } else if (path == 2) {
-                    path = 0;
-                } else if (path == 0) {
-                    path = 2;
-                }
-                setBorder(path);
+                moveBlock.style.transform = 'rotate(' + (dege += 180) + 'deg)';
+                de = dege % 360;
+                console.log("%" + de);
             } else {
                 console.log("else");
                 moveType.innerHTML = "";
                 moveType.placeholder = "请正确输入";
             }
         }
-        //删除所有子节点
-        function removeAllChilds(node) {
-            while (node.hasChildNodes()) {
-                node.removeChild(node.lastChild);
-            }
-        }
+
 
         function init() {
             render();
-            //初始化位置为 5 5,方向为上0 右1 下2 左3
-            moveE("55", 0);
-
+            //初始化位置为 5 5,方向为上
+            moveE("99",0);
             //移动格子
             moveOrder.addEventListener("click", function () {
                 let moveT = moveType.value.trim();
                 letGo(moveT);
-
             }, false)
         }
         init();
