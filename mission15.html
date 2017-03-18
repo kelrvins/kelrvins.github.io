@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务六：UI组件之浮出层</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            text-align: center;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .cBtn {
+            margin: 1rem;
+            padding: 10px 20px;
+            border: 1px solid #aaa;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.5s;
+        }
+        
+        #dialog {
+            border: 2px solid #000;
+            position: fixed;
+            background: #fff;
+            z-index: 101;
+        }
+        
+        #diaTitle {
+            width: 500px;
+            min-height: 30px;
+            border-bottom: 2px solid #000;
+            background: #444;
+            padding: 10px 0;
+            text-align: left;
+            line-height: 30px;
+            padding-left: 30px;
+            color: #fff;
+        }
+        
+        #diaContent {
+            min-height: 200px;
+            text-align: left;
+            padding: 20px;
+        }
+        
+        .diaBtn {
+            text-align: right;
+        }
+        
+        #omask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.49);
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li> 浮出层的中心默认在屏幕正中</li>
+        <li> 当浮出层显示时，屏幕滚动时，浮出层始终保持位置固定在屏幕正中，不随屏幕滚动而变化位置。或者禁止页面在有浮出层出现时滚动</li>
+        <li> 当浮出层显示时，点击浮出层以外的部分，默认为关闭浮出层。可以实现一个半透明的遮罩来挡住浮出层外的部分</li>
+        <li> 浮出层的样式、内容和逻辑尽量解耦</li>
+        <li> 提供使用JavaScript控制浮出层展现和关闭的接口</li>
+        <li> 浮出层的窗口大小可以是一个默认固定值，也可以是随内容变化而自适应变化，也可以是通过接口参数进行调整，自行根据自己能力进行选择</li>
+        <li> 有能力的同学可以实现浮出层的拖拽移动浮出窗口位置以及拖拽边缘来放大缩小浮出窗口的功能</li>
+    </ul>
+
+    <input type="button" value="click this" id="cBtn" class="cBtn">
+    <script>
+        let gbody = document.body,
+            cBtn = document.getElementById('cBtn'),
+            //页面区域
+            wHeight = document.body.scrollHeight | document.documentElement.scrollHeight,
+            wWidth = document.body.scrollWidth | document.documentElement.scrollWidth,
+            //可视区域
+            sHeight = document.body.clientHeight | document.documentElement.clientHeight,
+            sWidth = document.body.clientWidth | document.documentElement.clientWidth,
+            mask = null,
+            dialog = null;
+
+        let createMask = function () {
+            console.log("createMask");
+            mask = document.createElement('div');
+            mask.id = 'omask';
+            mask.style.height = wHeight + 'px';
+            mask.style.width = wWidth + 'px';
+            gbody.appendChild(mask);
+        }
+
+        let createFloat = function () {
+            console.log(wHeight);
+            console.log("createFloat");
+            dialog = document.createElement('div');
+            dialog.id = "dialog";
+            dialog.innerHTML =
+                " <div id='diaTitle'>title</div><div id='diaContent'><p>content</p></div><div class='diaBtn'><input type='button' value='确定' id='dConfirm' class='cBtn'><input type='button' value='取消' id='dCancel' class='cBtn'></div>";
+            gbody.appendChild(dialog);
+            let dWidth = dialog.offsetWidth,
+                dHeight = dialog.offsetHeight,
+                diaTitle = document.getElementById('diaTitle'),
+                diaContent = document.getElementById('diaContent'),
+                dConfirm = document.getElementById('dConfirm'),
+                dCancel = document.getElementById('dCancel');
+            dialog.style.left = sWidth / 2 - dWidth / 2 + 'px';
+            dialog.style.top = sHeight / 2 - dHeight / 2 + 'px';
+            dConfirm.onclick = function () {
+                dCancel();
+            }
+            mask.onclick = function () {
+                dConfirm();
+            }
+            dCancel.onclick = function () {
+                dConfirm();
+            }
+            let dConfirm = function () {
+                dCancel();
+            }
+            let dCancel = function () {
+                gbody.removeChild(mask);
+                gbody.removeChild(dialog);
+            }
+        }
+
+
+        window.onload = function () {
+            cBtn.onclick = function () {
+                createMask();
+                createFloat();
+            }
+        }
+    </script>
+</body>
+
+</html>
