@@ -92,6 +92,8 @@
             mask = null,
             dialog = null;
 
+
+
         let createMask = function () {
             console.log("createMask");
             mask = document.createElement('div');
@@ -102,36 +104,39 @@
         }
 
         let createFloat = function () {
-            console.log(wHeight);
-            console.log("createFloat");
             dialog = document.createElement('div');
             dialog.id = "dialog";
             dialog.innerHTML =
                 " <div id='diaTitle'>title</div><div id='diaContent'><p>content</p></div><div class='diaBtn'><input type='button' value='确定' id='dConfirm' class='cBtn'><input type='button' value='取消' id='dCancel' class='cBtn'></div>";
             gbody.appendChild(dialog);
+
             let dWidth = dialog.offsetWidth,
                 dHeight = dialog.offsetHeight,
                 diaTitle = document.getElementById('diaTitle'),
                 diaContent = document.getElementById('diaContent'),
                 dConfirm = document.getElementById('dConfirm'),
                 dCancel = document.getElementById('dCancel');
+
             dialog.style.left = sWidth / 2 - dWidth / 2 + 'px';
             dialog.style.top = sHeight / 2 - dHeight / 2 + 'px';
+
             dConfirm.onclick = function () {
-                dCancel();
-            }
-            mask.onclick = function () {
-                dConfirm();
+                dconfirm();
             }
             dCancel.onclick = function () {
-                dConfirm();
+                dcancel();
             }
-            let dConfirm = function () {
-                dCancel();
+            mask.onclick = function () {
+                dcancel();
             }
-            let dCancel = function () {
+
+            let dcancel = function () {
                 gbody.removeChild(mask);
                 gbody.removeChild(dialog);
+            }
+
+            let dconfirm = function () {
+                dcancel();
             }
         }
 
