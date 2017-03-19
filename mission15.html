@@ -34,6 +34,8 @@
             position: fixed;
             background: #fff;
             z-index: 101;
+            min-width: 500px;
+            min-height: 400px;
         }
         
         #diaTitle {
@@ -82,70 +84,75 @@
     <input type="button" value="click this" id="cBtn" class="cBtn">
     <script>
         let gbody = document.body,
-            cBtn = document.getElementById('cBtn'),
-            //页面区域
-            wHeight = document.body.scrollHeight | document.documentElement.scrollHeight,
-            wWidth = document.body.scrollWidth | document.documentElement.scrollWidth,
-            //可视区域
-            sHeight = document.body.clientHeight | document.documentElement.clientHeight,
-            sWidth = document.body.clientWidth | document.documentElement.clientWidth,
             mask = null,
             dialog = null;
 
-
-
-        let createMask = function () {
-            console.log("createMask");
-            mask = document.createElement('div');
-            mask.id = 'omask';
-            mask.style.height = wHeight + 'px';
-            mask.style.width = wWidth + 'px';
-            gbody.appendChild(mask);
+        function $(ele) {
+            return document.getElementById(ele);
         }
 
-        let createFloat = function () {
-            dialog = document.createElement('div');
-            dialog.id = "dialog";
-            dialog.innerHTML =
-                " <div id='diaTitle'>title</div><div id='diaContent'><p>content</p></div><div class='diaBtn'><input type='button' value='确定' id='dConfirm' class='cBtn'><input type='button' value='取消' id='dCancel' class='cBtn'></div>";
-            gbody.appendChild(dialog);
-
-            let dWidth = dialog.offsetWidth,
-                dHeight = dialog.offsetHeight,
-                diaTitle = document.getElementById('diaTitle'),
-                diaContent = document.getElementById('diaContent'),
-                dConfirm = document.getElementById('dConfirm'),
-                dCancel = document.getElementById('dCancel');
-
-            dialog.style.left = sWidth / 2 - dWidth / 2 + 'px';
-            dialog.style.top = sHeight / 2 - dHeight / 2 + 'px';
-
-            dConfirm.onclick = function () {
-                dconfirm();
+        //设置兼容事件
+        function addEvent(ele, event, func) {
+            if (ele.addEventListener) {
+                ele.addEventListener(event, func, false);
+            } else if (ele.attachEvent) {
+                ele.attachEvent('on' + event, func);
+            } else {
+                ele['on' + event] = func;
             }
-            dCancel.onclick = function () {
-                dcancel();
-            }
-            mask.onclick = function () {
-                dcancel();
-            }
+        }
 
-            let dcancel = function () {
+        //定义myDialog对象
+        let myDialog = function () {
+            this.init();
+        }
+
+        //定义方法
+        myDialog.prototype = {
+            //初始化
+            init: function () {
+                console.log("init");
+            },
+            show: function () {
+                console.log("createMask");
+                mask = document.createElement('div');
+                mask.id = 'omask';
+                mask.style.height = 100 + '%';
+                mask.style.width = 100 + '%';
+                gbody.appendChild(mask);
+                addEvent($('omask'), 'click', function () {
+                    dia.hide();
+                });
+
+                console.log("createDialog");
+                dialog = document.createElement('div');
+                dialog.id = "dialog";
+                dialog.style.left = "50%";
+                dialog.style.top = "50%";
+                dialog.style.transform = 'translate(-50%,-50%) scale(1,1)';
+                dialog.innerHTML =
+                    " <div id='diaTitle'>title</div><div id='diaContent'><p>content</p></div><div class='diaBtn'><input type='button' value='确定' id='dConfirm' class='cBtn'><input type='button' value='取消' id='dCancel' class='cBtn'></div>";
+                gbody.appendChild(dialog);
+
+                addEvent($('dConfirm'), 'click', function () {
+                    dia.hide();
+                });
+                addEvent($('dCancel'), 'click', function () {
+                    dia.hide();
+                });
+            },
+            hide: function () {
                 gbody.removeChild(mask);
                 gbody.removeChild(dialog);
             }
-
-            let dconfirm = function () {
-                dcancel();
-            }
         }
 
 
+        let dia = new myDialog();
         window.onload = function () {
-            cBtn.onclick = function () {
-                createMask();
-                createFloat();
-            }
+            addEvent($('cBtn'), 'click', function () {
+                dia.show();
+            });
         }
     </script>
 </body>
