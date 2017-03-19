@@ -39,7 +39,6 @@
         }
         
         #diaTitle {
-            width: 500px;
             min-height: 30px;
             border-bottom: 2px solid #000;
             background: #444;
@@ -58,6 +57,9 @@
         
         .diaBtn {
             text-align: right;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
         }
         
         #omask {
@@ -66,6 +68,10 @@
             top: 0;
             background: rgba(0, 0, 0, 0.49);
             z-index: 100;
+        }
+        
+        #diaTitle {
+            cursor: move;
         }
     </style>
 </head>
@@ -140,10 +146,64 @@
                 addEvent($('dCancel'), 'click', function () {
                     dia.hide();
                 });
+
+                this.setDrag();
+                this.setSize();
             },
             hide: function () {
                 gbody.removeChild(mask);
                 gbody.removeChild(dialog);
+            },
+            setDrag: function () {
+                let isClick = false;
+                addEvent($('diaTitle'), 'mousedown', function (event) {
+                    console.log("mousedown");
+                    isClick = true;
+                    let diaX = event.clientX - dialog.offsetLeft;
+                    let diaY = event.clientY - dialog.offsetTop;
+                    let move = function (event) {
+                        console.log("move");
+                        if (isClick) {
+                            dialog.style.left = event.clientX - diaX + 'px';
+                            dialog.style.top = event.clientY - diaY + 'px';
+                        }
+                    };
+                    addEvent(document, 'mousemove', move);
+                    addEvent(document, 'mouseup', function () {
+                        console.log("mouseup");
+                        isClick = false;
+                    })
+                })
+            },
+            setSize: function () {
+                let sizeBlock = document.createElement('div');
+                sizeBlock.style.width = '10px';
+                sizeBlock.style.height = '10px';
+                sizeBlock.style.background = '#aaa';
+                sizeBlock.style.position = 'absolute';
+                sizeBlock.style.right = '0';
+                sizeBlock.style.bottom = '0';
+                sizeBlock.style.cursor = 'nw-resize';
+                dialog.appendChild(sizeBlock);
+                addEvent(sizeBlock, 'mousedown', function (event) {
+                    console.log("mousedown");
+                    let isClick = true;
+                    let disX = event.clientX - dialog.offsetWidth;
+                    let disY = event.clientY - dialog.offsetHeight;
+                    console.log(disY);
+                    let resize = function (event) {
+                        console.log("resize");
+                        if (isClick) {
+                            dialog.style.width = event.clientX - disX + 'px';
+                            dialog.style.height = event.clientY - disY + 'px';
+                        }
+                    };
+                    addEvent(document, 'mousemove', resize);
+                    addEvent(document, 'mouseup', function () {
+                        console.log("mouseup");
+                        isClick = false;
+                    })
+                })
             }
         }
 
