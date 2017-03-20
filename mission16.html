@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务七：UI组件之排序表格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #iTable {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #8f8f8f;
+            margin: 10rem auto;
+        }
+        
+        thead tr {
+            background: #828282;
+        }
+        
+        thead tr th {
+            padding: 10px 50px;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: lighter;
+        }
+        
+        th span {
+            padding-right: 5px;
+        }
+        
+        .top-bot::after {
+            content: url(files/img/上下.png);
+        }
+        
+        .topI::after {
+            content: url(files/img/上.png);
+        }
+        
+        .botI::after {
+            content: url(files/img/下.png);
+        }
+        
+        thead tr th:not(:last-child) {
+            border-right: 1px solid #fff;
+        }
+        
+        thead tr th:not(:first-child) {
+            cursor: pointer;
+        }
+        
+        tbody tr {
+            border: 1px solid #828282;
+        }
+        
+        td {
+            text-align: center;
+            line-height: 2rem;
+            height: 2rem;
+            border: .5px solid #828282;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="iTable" cellspacing="0">
+        <thead>
+            <tr id="tableTr">
+                <th id="nam"><span>姓名</span></th>
+                <th id="sId"><span>学号</span></th>
+                <th id="che"><span>语文</span></th>
+                <th id="mat"><span>数学</span></th>
+                <th id="eng"><span>英语</span></th>
+                <th id="tot"><span>总分</span></th>
+            </tr>
+        </thead>
+        <tbody id="iTbody">
+        </tbody>
+    </table>
+    <script>
+        let lis = $('tableTr').getElementsByTagName("th")
+        var score = [{
+            id: 1001,
+            name: "小明",
+            chinese: 80,
+            math: 90,
+            english: 87,
+            tot: 257
+        }, {
+            id: 1002,
+            name: "小花",
+            chinese: 60,
+            math: 30,
+            english: 40,
+            tot: 130
+        }, {
+            id: 1003,
+            name: "老王",
+            chinese: 99,
+            math: 90,
+            english: 90,
+            tot: 279
+        }, {
+            id: 1004,
+            name: "小李",
+            chinese: 82,
+            math: 98,
+            english: 60,
+            tot: 240
+        }]
+
+        function $(ele) {
+            return document.getElementById(ele)
+        }
+
+        //设置兼容事件
+        function addEvent(ele, event, func) {
+            if (ele.addEventListener) {
+                ele.addEventListener(event, func, false);
+            } else if (ele.attachEvent) {
+                ele.attachEvent('on' + event, func);
+            } else {
+                ele['on' + event] = func;
+            }
+        }
+
+        let myTable = function () {
+            this.init.apply(this, arguments)
+        }
+        //定义表格方法
+        myTable.prototype = {
+            init: function (arry, parm, sortby) {
+                console.log("init");
+                this.obj = arry
+                this.parm = parm
+                this.b = sortby
+            },
+            sot: function () {
+                console.log("sot");
+                let $this = this
+                let down = function (x, y) {
+                    return (eval("x." + $this.parm) > eval("y." + $this.parm)) ? -1 : 1
+                }
+                let up = function (x, y) {
+                    return (eval("x." + $this.parm) < eval("y." + $this.parm)) ? -1 : 1
+                }
+                if (this.b === "down") this.obj.sort(down)
+                if (this.b === "up") this.obj.sort(up)
+            },
+            prin: function () {
+                console.log("prin");
+                removeAllChild($('iTbody'))
+                for (let i = 0; i < score.length; i++) {
+                    let iTr = document.createElement("tr")
+                    iTr.innerHTML += "<td>" + score[i].name + "</td>"
+                    iTr.innerHTML += "<td>" + score[i].id + "</td>"
+                    iTr.innerHTML += "<td>" + score[i].chinese + "</td>"
+                    iTr.innerHTML += "<td>" + score[i].math + "</td>"
+                    iTr.innerHTML += "<td>" + score[i].english + "</td>"
+                    iTr.innerHTML += "<td>" + score[i].tot + "</td>"
+                    $('iTbody').appendChild(iTr)
+                }
+            }
+        }
+        //移除子元素
+        function removeAllChild(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild)
+            }
+        }
+
+        //初始化
+        let myt = new myTable(score, "id", "up")
+        myt.sot()
+        myt.prin()
+
+        let setIcon = function (ele, pa) {
+            for (let i = 1; i < lis.length; i++) {
+                if (lis[i].id != ele.id) {
+                    lis[i].className = "top-bot";
+                }
+            }
+            if (ele.className == 'top-bot') {
+                ele.setAttribute('class', 'topI')
+                myt.init(score, pa, "up")
+            } else if (ele.className == 'topI') {
+                ele.setAttribute('class', 'botI')
+                myt.init(score, pa, "down")
+            } else {
+                ele.setAttribute('class', 'top-bot')
+                myt.init(score, "id", "up")
+                $('sId').className = "topI";
+            }
+            myt.sot()
+            myt.prin()
+        }
+
+        window.onload = function () {
+            $('sId').className = "topI";
+            for (let i = 2; i < lis.length; i++) {
+                lis[i].className = "top-bot";
+            }
+            addEvent($('sId'), "click", function () {
+                // for (let i = 1; i < lis.length; i++) {
+                //     if (lis[i].id != "sId") {
+                //         lis[i].className = "top-bot";
+                //     }
+                // }
+                setIcon($('sId'), "id")
+            })
+            addEvent($('che'), "click", function () {
+                // for (let i = 1; i < lis.length; i++) {
+                //     if (lis[i].id != "che") {
+                //         lis[i].className = "top-bot";
+                //     }
+                // }
+                setIcon($('che'), "chinese")
+            })
+            addEvent($('mat'), "click", function () {
+                // for (let i = 1; i < lis.length; i++) {
+                //     if (lis[i].id != "mat") {
+                //         lis[i].className = "top-bot";
+                //     }
+                // }
+                setIcon($('mat'), "math")
+            })
+            addEvent($('eng'), "click", function () {
+                // for (let i = 1; i < lis.length; i++) {
+                //     if (lis[i].id != "eng") {
+                //         lis[i].className = "top-bot";
+                //     }
+                // }
+                setIcon($('eng'), "eng")
+            })
+            addEvent($('tot'), "click", function () {
+                for (let i = 1; i < lis.length; i++) {
+                    if (lis[i].id != "tot") {
+                        lis[i].className = "top-bot";
+                    }
+                }
+                setIcon($('tot'), "tot")
+            })
+        }
+    </script>
+</body>
+
+</html>
