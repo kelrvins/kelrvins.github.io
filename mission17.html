@@ -22,7 +22,7 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             overflow: hidden;
         }
 
@@ -36,15 +36,18 @@
         }
 
         .container {
-            box-sizing: border-box;
+            opacity: 0;
+            position: absolute;
             width: 80%;
-            height: 60%;
-            margin: auto;
-            text-align: center;
-            position: relative;
-            visibility: hidden;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: opacity .5s;
         }
-        .container p{
+
+        .container p {
             margin-top: 100px;
             font-weight: bold;
             font-size: 3rem;
@@ -54,61 +57,75 @@
             color: transparent;
             animation: stream 4s infinite linear;
             transform: translateY(20px);
+            text-align: center;
         }
-        .container a{
-            display: inline-block;
+
+        .container span {
+            display: block;
             padding-top: 40px;
             font-size: 2rem;
-            text-decoration: none;
+            background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: stream 4s infinite linear;
+            transform: translateY(20px); 
             font-weight: bold;
+            text-align: center;
             position: relative;
-            color: #fff;
         }
 
-        .container::before{
-            content: "";
-            position: absolute;
-            left: 0%;
-            top: 0;
-            border: 3px solid ghostwhite;
-            height: 100%;
+        .container::before {
+            content: '';
+            display: inline-block;
             width: 100%;
-            border-width: 3px 0;
-            box-sizing: border-box;
-            transition: 0.5s;
-        }
-
-        .container::after{
-            content: "";
+            height: 0;
             position: absolute;
-            top: 0%;
             left: 0;
+            top: 50%;
             border: 3px solid ghostwhite;
-            width: 100%;
-            height: 100%;
             border-width: 0 3px;
+            visibility: hidden;
             box-sizing: border-box;
-            transition: 0.5s;
+            transition: all .5s;
         }
 
-        .wrap:hover .bg{
+        .container::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border: 3px solid ghostwhite;
+            border-width: 3px 0;
+            visibility: hidden;
+            box-sizing: border-box;
+            transition: all .5s;
+        }
+
+        .wrap:hover .bg {
             filter: blur(10px);
         }
-        .wrap:hover .bg{
+
+        .wrap:hover .bg {
             visibility: visiblel;
         }
 
-        .wrap:hover .container{
-            visibility:visible;
+        .wrap:hover .container {
+            opacity: 1;
+            visibility: visible;
         }
-
-        .wrap:hover .container .caption::before {
-            left: 0;
-            width: 100%;
-        }
-        .wrap:hover .container .caption::after {
-            top: 0;
+        .wrap:hover .container::before {
             height: 100%;
+            visibility: visible;
+            top:0;
+        }
+        .wrap:hover .container::after {
+            width: 100%;
+            visibility: visible;
+            left: 0;
         }
 
 
@@ -128,7 +145,7 @@
         <div class="bg"></div>
         <div class="container">
             <p>不得了了赶紧跑</p>
-            <a href="#">翻新航母，潜艇抛光，卫星除尘，核弹保养</a>
+            <span>翻新航母，潜艇抛光，卫星除尘，核弹保养</span>
         </div>
     </div>
 </body>
