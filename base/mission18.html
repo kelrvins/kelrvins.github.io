@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义网页右键菜单</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        .wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .r-click {
+            width: 80%;
+            height: 15rem;
+            background: #eee;
+            border: 1px solid #444;
+            border-radius: 5px;
+            margin: 5rem auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 7rem;
+        }
+
+        .r-content {
+            position: fixed;
+            /*top: 5rem;
+            left: 5rem;*/
+            background: #fff;
+            display: none;
+        }
+
+        .r-content ul {
+            display: inline-block;
+            list-style-type: none;
+            border: 1px #aaa solid;
+            border-radius: 5px;
+        }
+
+        .r-content ul li {
+            padding: 0 1rem;
+            cursor: pointer;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="r-click" id="rightClick">
+            <h1>right click here</h1>
+        </div>
+        <div id="rightContent" class="r-content">
+            <ul id="ulItem">
+                <li>啦啦啦</li>
+                <li>哈哈哈</li>
+                <li>666</li>
+                <li>老铁扎心了</li>
+                <li>有基友开我裤链</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $ = function (ele) {
+            return document.getElementById(ele)
+        }
+        //设置兼容事件
+        function addEvent(ele, event, func) {
+            if (ele.addEventListener) {
+                ele.addEventListener(event, func, false);
+            } else if (ele.attachEvent) {
+                ele.attachEvent('on' + event, func);
+            } else {
+                ele['on' + event] = func;
+            }
+        }
+
+        //显示右击菜单
+        function ShowRight(event) {
+            var mouseX = event.clientX,
+                mouseY = event.clientY,
+                rigClickWidth = $('rightContent').offsetWidth,
+                rigClickHeight = $('rightContent').offsetHeight,
+                viewWidth = document.documentElement.clientWidth,
+                viewHeight = document.documentElement.clientHeight
+
+            console.log(mouseX, mouseY)
+            // && mouseY < (viewHeight - rigClickHeight)
+
+            $('rightContent').style.display = "block"
+            if (mouseX < (viewWidth - rigClickWidth)) {
+                console.log("1")
+                if (mouseY > (viewHeight - rigClickHeight)) {
+                    console.log("3")
+                    $('rightContent').style.top = mouseY - rigClickHeight + "px"
+                    $('rightContent').style.left = mouseX - rigClickWidth + "px"
+                } else {
+                    $('rightContent').style.top = mouseY + "px"
+                    $('rightContent').style.left = mouseX + "px"
+                }
+            } else if (mouseX > (viewWidth - rigClickWidth)) {
+                console.log("2")
+                if (mouseY > (viewHeight - rigClickHeight)) {
+                    $('rightContent').style.top = mouseY + "px"
+                    $('rightContent').style.left = mouseX + "px"
+                } else {
+                    $('rightContent').style.top = mouseY + "px"
+                    $('rightContent').style.left = mouseX - rigClickWidth + "px"
+                }
+            }
+        }
+        (function () {
+            addEvent($('rightClick'), "contextmenu", function () {
+                //阻止原有右击菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault()
+                }
+                //显示右击菜单
+                ShowRight(event)
+            })
+            addEvent($('rightClick'), "click", function () {
+                $('rightContent').style.display = "none"
+            })
+            document.body.addEventListener("click", function (e) {
+                $('rightContent').style.display = 'none';
+                document.oncontextmenu = function (e) {}
+            })
+            addEvent($('rightContent'), "click", function () {
+                var lis = document.getElementsByTagName("Li");
+                var target = event.target || event.srcElement;
+                if (!!target && target.nodeName.toUpperCase() === 'LI') {
+                    alert(target.innerHTML);
+                }
+            })
+        })()
+    </script>
+</body>
+
+</html>
