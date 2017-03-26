@@ -4,7 +4,7 @@ var songdata = [{
     songauthor: "Fine乐团",
     like: "n",
     songpath: "files/music/Fine乐团 - 感性.mp3",
-    songpic: "files/music/感性.jpg"
+    songpic: "files/img/感性.jpg"
 }, {
     songid: "2",
     songname: "烟花易冷",
@@ -18,14 +18,14 @@ var songdata = [{
     songauthor: "李健",
     like: "",
     songpath: "files/music/李健 - 异乡人.mp3",
-    songpic: "files/music/异乡人.jpg"
+    songpic: "files/img/异乡人.jpg"
 }, {
     songid: "4",
     songname: "当你",
     songauthor: "林俊杰",
     like: "",
     songpath: "files/music/林俊杰 - 当你.mp3",
-    songpic: "files/music/当你.jpg"
+    songpic: "files/img/当你.jpg"
 }]
 var currentPlay = 1,
     songDataLength = 0,
