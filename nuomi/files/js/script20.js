@@ -3,8 +3,8 @@ var songdata = [{
     songname: "感性",
     songauthor: "Fine乐团",
     like: "n",
-    songpath: "http://yinyueshiting.baidu.com/data2/music/37791001/249651922680032.m4a?xcode=ee42838e4eac1f6d39ce60c9b3abe9ef",
-    songpic: "files/img/感性.jpg"
+    songpath: "http://zhangmenshiting.baidu.com/data2/music/17d7dfa547755a4f882e1665f58aa853/256955067/256955067.mp3?xcode=627ed9cff0dfaceb96a2d3f13bf86a03",
+    songpic: "http://ugc.cdn.qianqian.com/yinyueren/pic/53427a1e58c2d0bd231e7aaeb4ef60ce.jpg"
 }, {
     songid: "2",
     songname: "烟花易冷",
@@ -18,7 +18,7 @@ var songdata = [{
     songauthor: "李健",
     like: "",
     songpath: "http://yinyueshiting.baidu.com/data2/music/123303358/155635614400128.mp3?xcode=ee42838e4eac1f6d8c3c42cb27c397d9",
-    songpic: "files/img/异乡人.jpg"
+    songpic: "http://musicdata.baidu.com/data2/pic/b27435297027406c26b3b74d9e805263/263504399/263504399.jpg@s_0,w_300"
 }, {
     songid: "4",
     songname: "当你",
