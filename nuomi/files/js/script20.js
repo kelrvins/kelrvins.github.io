@@ -3,7 +3,7 @@ var songdata = [{
     songname: "感性",
     songauthor: "Fine乐团",
     like: "n",
-    songpath: "files/music/Fine乐团 - 感性.mp3",
+    songpath: "http://yinyueshiting.baidu.com/data2/music/37791001/249651922680032.m4a?xcode=ee42838e4eac1f6d39ce60c9b3abe9ef",
     songpic: "files/img/感性.jpg"
 }, {
     songid: "2",
@@ -17,15 +17,15 @@ var songdata = [{
     songname: "异乡人",
     songauthor: "李健",
     like: "",
-    songpath: "files/music/李健 - 异乡人.mp3",
+    songpath: "http://yinyueshiting.baidu.com/data2/music/123303358/155635614400128.mp3?xcode=ee42838e4eac1f6d8c3c42cb27c397d9",
     songpic: "files/img/异乡人.jpg"
 }, {
     songid: "4",
     songname: "当你",
     songauthor: "林俊杰",
     like: "",
-    songpath: "files/music/林俊杰 - 当你.mp3",
-    songpic: "files/img/当你.jpg"
+    songpath: "http://yinyueshiting.baidu.com/data2/music/37791001/249651922680032.m4a?xcode=d212ff386e8b0e74e9c5304b21fec782",
+    songpic: "http://musicdata.baidu.com/data2/pic/88768149/88768149.jpg@s_0,w_300"
 }]
 var currentPlay = 1,
     songDataLength = 0,
