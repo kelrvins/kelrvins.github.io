@@ -10,7 +10,7 @@ var songdata = [{
     songname: "烟花易冷",
     songauthor: "周杰伦",
     like: "y",
-    songpath: "files/music/周杰伦 - 烟花易冷.mp3",
+    songpath: "http://yinyueshiting.baidu.com/data2/music/239130762/2283931490313661128.mp3?xcode=22236f42bcb8a93984b505fb6b038464",
     songpic: ""
 }, {
     songid: "3",
