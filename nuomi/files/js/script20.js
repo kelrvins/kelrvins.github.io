@@ -27,6 +27,7 @@ var songdata = [{
     songpath: "http://yinyueshiting.baidu.com/data2/music/37791001/249651922680032.m4a?xcode=d212ff386e8b0e74e9c5304b21fec782",
     songpic: "http://musicdata.baidu.com/data2/pic/88768149/88768149.jpg@s_0,w_300"
 }]
+
 var currentPlay = 1,
     songDataLength = 0,
     loopstyle = 0;
@@ -46,14 +47,19 @@ function addEvent(ele, event, func) {
     }
 }
 
-var audioPlay = function () {
-    this.listFill()
-    this.ainit(1)
-    $('voluemeLength').style.width = ($('audioControl').volume) * 100 + "%"
-}
+// var audioPlay = function () {
+//     this.listFill()
+//     this.ainit(1)
+//     $('voluemeLength').style.width = ($('audioControl').volume) * 100 + "%"
+// }
 
-audioPlay.prototype = {
-    listFill: function () {
+class audioPlay {
+    constructor() {
+        this.listFill()
+        this.ainit(1)
+        $('voluemeLength').style.width = ($('audioControl').volume) * 100 + "%"
+    }
+    listFill() {
         removaAllNodes($('songListUl'))
         for (var op in songdata) {
             let l = document.createElement('li');
@@ -69,8 +75,8 @@ audioPlay.prototype = {
             songDataLength = op
             setNameColor(currentPlay)
         }
-    },
-    ainit: function (el, eve) {
+    }
+    ainit(el, eve) {
         for (var op in songdata) {
             if (songdata[op].songid == el) {
                 currentPlay = songdata[op].songid
@@ -100,8 +106,8 @@ audioPlay.prototype = {
                 setNameColor(currentPlay)
             }
         }
-    },
-    apause: function () {
+    }
+    apause() {
         if ($('audioControl').paused) {
             // console.log("play");
             $('audioControl').play()
@@ -113,8 +119,8 @@ audioPlay.prototype = {
             $('songPause').className = $('songPause').className.replace('zanting', 'bofang')
             clearInterval(progressFlag)
         }
-    },
-    aprevious: function () {
+    }
+    aprevious() {
         // console.log("previous")
         this.setend()
         getPriNo()
@@ -122,8 +128,8 @@ audioPlay.prototype = {
         $('audioControl').play()
         $('songPause').className = $('songPause').className.replace('bofang', 'zanting')
         progressFlag = setInterval(getProgress, 100)
-    },
-    anext: function () {
+    }
+    anext() {
         // console.log("next")
         this.setend()
         getNextNo()
@@ -131,19 +137,19 @@ audioPlay.prototype = {
         $('audioControl').play()
         $('songPause').className = $('songPause').className.replace('bofang', 'zanting')
         progressFlag = setInterval(getProgress, 100)
-    },
-    alike: function () {
+    }
+    alike() {
         // console.log("alike:" + currentPlay)
         setLike(parseInt(currentPlay))
-    },
-    adislike: function () {
+    }
+    adislike() {
         // console.log("alike:" + currentPlay)
         setdisLike(parseInt(currentPlay))
-    },
-    adownload: function () {
+    }
+    adownload() {
         console.log("download")
-    },
-    aloop: function () {
+    }
+    aloop() {
         //0：列表循环  1：单曲 2：随机
         // console.log("aloop")
         var sw = parseInt(loopstyle)
@@ -165,8 +171,8 @@ audioPlay.prototype = {
                 $('songCycle').style.color = "#000"
                 break
         }
-    },
-    setVolume: function () {
+    }
+    setVolume() {
         // console.log("setVolume")
         var mouseX = event.clientX,
             voluemeLWidth = $('voluemeL').offsetWidth,
@@ -174,21 +180,21 @@ audioPlay.prototype = {
         // console.log(mouseX, voluemeLWidth, voluemeLLeft)
         $('audioControl').volume = (mouseX - voluemeLLeft) / 50
         $('voluemeLength').style.width = (mouseX - voluemeLLeft) / 50 * 100 + "%"
-    },
-    setRandom: function () {
+    }
+    setRandom() {
         // console.log("setRandom")
         getrandom()
         // console.log("random:" + parseInt(currentPlay))
         this.ainit(parseInt(currentPlay), "next")
         this.apause()
-    },
-    setend: function () {
+    }
+    setend() {
         // console.log("setend")
         $('songPause').className = $('songPause').className.replace('zanting', 'bofang')
         $('audioControl').currentTime = 0
         $('progressLine').style.width = 0 + "%"
-    },
-    setPlayProgress: function () {
+    }
+    setPlayProgress() {
         // console.log("setProgress")
         var mouseX = event.clientX,
             playWidth = $('playProgress').offsetWidth,
@@ -196,12 +202,12 @@ audioPlay.prototype = {
         // console.log(mouseX, playWidth, playmeLLeft)
         $('audioControl').currentTime = (mouseX - playmeLLeft) / 434 * $('audioControl').duration
         $('progressLine').style.width = (mouseX - playmeLLeft) / 434 * 100 + "%"
-    },
-    gettime: function () {
+    }
+    gettime() {
         $('songTime').innerHTML = "-" + formatSeconds($('audioControl').duration - $('audioControl')
             .currentTime)
-    },
-    closeSongL: function () {
+    }
+    closeSongL() {
         if ($('wrapList').style.visibility == "hidden") {
             $('wrapList').style.visibility = "visible"
         } else {
@@ -363,7 +369,7 @@ var getOffsetLeft = function (obj) {
     return tmp
 }
 
-var myplay = new audioPlay()
+let myplay = new audioPlay()
 
 window.onload = function () {
     addEvent($('songPrevious'), "click", function () {
