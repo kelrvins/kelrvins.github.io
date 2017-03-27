@@ -30,7 +30,8 @@ var songdata = [{
 
 var currentPlay = 1,
     songDataLength = 0,
-    loopstyle = 0;
+    loopstyle = 0,
+    progressFlag=null;
 
 $ = function (ele) {
     return document.getElementById(ele);
