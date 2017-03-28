@@ -31,14 +31,14 @@ var songdata = [{
 var currentPlay = 1,
     songDataLength = 0,
     loopstyle = 0,
-    progressFlag=null;
+    progressFlag = null;
 
 $ = function (ele) {
     return document.getElementById(ele);
 }
 
 //设置兼容事件
-function addEvent(ele, event, func) {
+let addEvent = function (ele, event, func) {
     if (ele.addEventListener) {
         ele.addEventListener(event, func, false);
     } else if (ele.attachEvent) {
@@ -48,11 +48,6 @@ function addEvent(ele, event, func) {
     }
 }
 
-// var audioPlay = function () {
-//     this.listFill()
-//     this.ainit(1)
-//     $('voluemeLength').style.width = ($('audioControl').volume) * 100 + "%"
-// }
 
 class audioPlay {
     constructor() {
@@ -218,7 +213,7 @@ class audioPlay {
 }
 
 //return 0:nothing 1:dis 2:like
-function getLike(ele) {
+var getLike = function (ele) {
     var islikes = 0;
     for (var op in songdata) {
         if (songdata[op].songid == ele)
@@ -231,7 +226,7 @@ function getLike(ele) {
     return islikes
 }
 
-function setLike(ele) {
+var setLike = function (ele) {
     var islikes = 0;
     for (var op in songdata) {
         if (songdata[op].songid == ele)
@@ -248,7 +243,7 @@ function setLike(ele) {
     myplay.listFill()
 }
 
-function setdisLike(ele) {
+var setdisLike = function (ele) {
     var islikes = 0;
     for (var op in songdata) {
         if (songdata[op].songid == ele)
@@ -266,13 +261,13 @@ function setdisLike(ele) {
 }
 
 //删除所有节点
-function removaAllNodes(ele) {
+var removaAllNodes = function (ele) {
     while (ele.hasChildNodes()) {
         ele.removeChild(ele.lastChild)
     }
 }
 
-function setNameColor(el) {
+var setNameColor = function (el) {
     var uls = document.getElementById('songListUl')
     var items = uls.getElementsByTagName("li")
     for (var i = 0; i < items.length; i++) {
@@ -286,7 +281,7 @@ function setNameColor(el) {
     }
 }
 //向上获取序号
-function getPriNo() {
+var getPriNo = function () {
     if (parseInt(currentPlay) == 1) {
         currentPlay = parseInt(songDataLength) + 1
     } else {
@@ -299,7 +294,7 @@ function getPriNo() {
 }
 
 //向下获取序号
-function getNextNo() {
+var getNextNo = function () {
     if (parseInt(currentPlay) == parseInt(songDataLength) + 1) {
         currentPlay = 1
     } else {
@@ -312,7 +307,7 @@ function getNextNo() {
 }
 
 // 获取随机播放
-function getrandom() {
+var getrandom = function () {
     var ne = parseInt(Math.random() * (parseInt(songDataLength) + 1) + 1)
     if (ne == parseInt(currentPlay) || getLike(ne) == 1 || ne == "NaN") {
         getrandom()
@@ -322,14 +317,14 @@ function getrandom() {
 }
 
 // video的播放条
-function getProgress() {
+var getProgress = function () {
     var percent = $('audioControl').currentTime / $('audioControl').duration
     $('progressLine').style.width = (percent * 100).toFixed(1) + "%"
     myplay.gettime()
 }
 
 //格式化时间
-function formatSeconds(value) {
+var formatSeconds = function (value) {
     var theTime = parseInt(value) // 秒
     var theTime1 = 0 // 分
     var theTime2 = 0 // 小时
