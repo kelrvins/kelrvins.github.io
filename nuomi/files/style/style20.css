@@ -90,10 +90,6 @@ body {
     cursor: pointer
 }
 
-.wrap-play {
-    padding-left: 20px
-}
-
 .song-operating {
     float: left;
     padding-top: 6rem;
