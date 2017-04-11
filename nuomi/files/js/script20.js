@@ -3,28 +3,28 @@ var songdata = [{
     songname: "感性",
     songauthor: "Fine乐团",
     like: "n",
-    songpath: "http://zhangmenshiting.baidu.com/data2/music/17d7dfa547755a4f882e1665f58aa853/256955067/256955067.mp3?xcode=627ed9cff0dfaceb96a2d3f13bf86a03",
+    songpath: "http://7xurqc.com1.z0.glb.clouddn.com/Fine%E4%B9%90%E5%9B%A2%20-%20%E6%84%9F%E6%80%A7.mp3",
     songpic: "http://ugc.cdn.qianqian.com/yinyueren/pic/53427a1e58c2d0bd231e7aaeb4ef60ce.jpg"
 }, {
     songid: "2",
     songname: "烟花易冷",
     songauthor: "周杰伦",
     like: "y",
-    songpath: "http://yinyueshiting.baidu.com/data2/music/239130762/2283931490313661128.mp3?xcode=22236f42bcb8a93984b505fb6b038464",
+    songpath: "http://7xurqc.com1.z0.glb.clouddn.com/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7.mp3",
     songpic: ""
 }, {
     songid: "3",
     songname: "异乡人",
     songauthor: "李健",
     like: "",
-    songpath: "http://yinyueshiting.baidu.com/data2/music/123303358/155635614400128.mp3?xcode=ee42838e4eac1f6d8c3c42cb27c397d9",
+    songpath: "http://7xurqc.com1.z0.glb.clouddn.com/%E6%9D%8E%E5%81%A5%20-%20%E5%BC%82%E4%B9%A1%E4%BA%BA.mp3",
     songpic: "http://musicdata.baidu.com/data2/pic/b27435297027406c26b3b74d9e805263/263504399/263504399.jpg@s_0,w_300"
 }, {
     songid: "4",
     songname: "当你",
     songauthor: "林俊杰",
     like: "",
-    songpath: "http://yinyueshiting.baidu.com/data2/music/37791001/249651922680032.m4a?xcode=d212ff386e8b0e74e9c5304b21fec782",
+    songpath: "http://7xurqc.com1.z0.glb.clouddn.com/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%BD%93%E4%BD%A0.mp3",
     songpic: "http://musicdata.baidu.com/data2/pic/88768149/88768149.jpg@s_0,w_300"
 }]
 
