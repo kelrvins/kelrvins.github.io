@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c405723dc5b744951c91"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8c20ecf14d04dc9e6e9b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -769,11 +769,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-let deviceWidth = document.body.offsetWidth
+let deviceWidth = document.body.offsetWidth,
+    pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
 
 class pixShow {
     constructor() {
-        this.pictureShow();
+        this.pictureShow()
+        this.loadImg(pics)
+        this.dateChange()
     }
     pictureShow() {
         __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removaAllChildNodes(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics"))
@@ -789,6 +792,7 @@ class pixShow {
             let p = keys[k]
             let dateShow = document.createElement("div")
             dateShow.className = "date-show"
+            dateShow.id = p
             dateShow.innerHTML = p.substr(0, 4) + "/" + p.substr(4, 2) + "/" + p.substr(6)
             oFrag.appendChild(dateShow)
             for (let i in __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p]) {
@@ -819,12 +823,13 @@ class pixShow {
     }
     loadImg(imgs) {
         for (let i = 0, len = imgs.length; i < len; i++) {
-            if ((imgs[i].getBoundingClientRect().top - 200) < document.documentElement.clientHeight) {
+            if ((imgs[i].getBoundingClientRect().top - 200) < document.documentElement.clientHeight && !imgs[i].isload) {
                 (function (i) {
+                    imgs[i].isload = true
                     setTimeout(function () {
                         if (imgs[i].dataset) {
                             pix.aftLoadImg(imgs[i], imgs[i].dataset.src);
-                        } else { 
+                        } else {
                             pix.aftLoadImg(imgs[i], imgs[i].getAttribute("data-src"));
                         }
                     }, 500)
@@ -840,15 +845,23 @@ class pixShow {
         }
         oImg.src = url;
     }
+    dateChange() {
+        let dateTitle = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$$(".date-show")
+        for (let i = 0; i < dateTitle.length; i++) {
+            if (dateTitle[i].getBoundingClientRect().top < 100 && dateTitle[i].getBoundingClientRect().top > 0) {
+                // console.log(dateTitle[i].textContent)
+                __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#headerDateTime").innerHTML = dateTitle[i].textContent.substr(-2)
+            }
+        }
+    }
 }
 
 const pix = new pixShow()
 
-let pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
-pix.loadImg(pics)
 
 window.onscroll = function () {
     pix.loadImg(pics)
+    pix.dateChange()
 }
 
 window.addEventListener("orientationchange", function () {
