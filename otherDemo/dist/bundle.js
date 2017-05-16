@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8c20ecf14d04dc9e6e9b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7d2f1d50121bb2991912"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -716,7 +716,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "html {font-size:10px}\r\n@media screen and (min-width:480px) and (max-width:639px) {\r\n    html {\r\n        font-size: 15px\r\n    }\r\n}\r\n@media screen and (min-width:640px) and (max-width:719px) {\r\n    html {\r\n        font-size: 20px\r\n    }\r\n}\r\n@media screen and (min-width:720px) and (max-width:749px) {\r\n    html {\r\n        font-size: 22.5px\r\n    }\r\n}\r\n@media screen and (min-width:750px) and (max-width:799px) {\r\n    html {\r\n        font-size: 23.5px\r\n    }\r\n}\r\n@media screen and (min-width:800px) and (max-width:959px) {\r\n    html {\r\n        font-size: 25px\r\n    }\r\n}\r\n@media screen and (min-width:960px) and (max-width:1079px) {\r\n    html {\r\n        font-size: 30px\r\n    }\r\n}\r\n@media screen and (min-width:1080px) {\r\n    html {\r\n        font-size: 32px\r\n    }\r\n}\r\n/*.header-top{\r\n  position: fixed;\r\n  height: 4.5rem;\r\n  width: 100%;\r\n  background: #000;\r\n}*/\r\nnav{\r\n  position: fixed;\r\n  width: 100%;\r\n  background: rgba(246, 246, 246, 0.26);\r\n  padding: 0.5rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack:justify;\r\n      -ms-flex-pack:justify;\r\n          justify-content:space-between;\r\n  box-shadow: 0px -3px 17px 0px #a79a9a;\r\n  z-index: 100;\r\n}\r\n\r\n.header-date-time{\r\n  display: inline-block;\r\n  font-size: 2rem; \r\n  text-align: center;\r\n  line-height: 3rem;\r\n  padding: 0 0.5rem;\r\n  border-top: 1px solid #777;\r\n  border-bottom: 1px solid #777;\r\n  margin:0 0 0 1rem;\r\n}\r\n\r\n.i-like{\r\n  display: inline-block;\r\n  margin: 0;\r\n  margin-right: 3rem;\r\n  line-height: 3rem;\r\n  font-size: 2rem;\r\n  color: #000;\r\n  text-decoration: none;\r\n}\r\n.article{\r\n  /*position: fixed;*/\r\n  width: 100%;\r\n  height: calc(100% - 5rem);\r\n  /*overflow-y: scroll;*/\r\n  background: #f6f6f6;\r\n  padding-top: 4.5rem;\r\n}\r\n\r\n.date-show{\r\n  width: 6rem;\r\n    color: #fff;\r\n    text-align: center;\r\n    padding: 0.3rem;\r\n    margin: 1rem auto;\r\n    background: #1d87fc;\r\n    border-radius: 0.3rem;\r\n}\r\n.pix-block{\r\n  margin-bottom: 2rem;\r\n  background: #fff;\r\n  box-shadow: 15px 2px 17px 0px #a79a9a;\r\n}\r\n.pix-block img{\r\n  width: 100%;\r\n  background: url(\"http://i1.piimg.com/588926/9723f12607f59ed0.gif\") no-repeat center\r\n}\r\n.pix-opera{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack:justify;\r\n      -ms-flex-pack:justify;\r\n          justify-content:space-between;\r\n}\r\n.pix-opera p{\r\n  display: inline-block;\r\n}\r\n.pix-content{\r\n  margin-left: 0.5rem;\r\n}\r\n.pix-like{\r\n  margin-right: 0.5rem;\r\n}", ""]);
+exports.push([module.i, "html {\r\n    font-size: 10px\r\n}\r\n\r\n@media screen and (min-width:480px) and (max-width:639px) {\r\n    html {\r\n        font-size: 15px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:640px) and (max-width:719px) {\r\n    html {\r\n        font-size: 20px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:720px) and (max-width:749px) {\r\n    html {\r\n        font-size: 22.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:750px) and (max-width:799px) {\r\n    html {\r\n        font-size: 23.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:800px) and (max-width:959px) {\r\n    html {\r\n        font-size: 25px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:960px) and (max-width:1079px) {\r\n    html {\r\n        font-size: 30px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:1080px) {\r\n    html {\r\n        font-size: 32px\r\n    }\r\n}\r\n\r\n\r\n/*.header-top{\r\n  position: fixed;\r\n  height: 4.5rem;\r\n  width: 100%;\r\n  background: #000;\r\n}*/\r\n\r\nnav {\r\n    position: fixed;\r\n    width: 100%;\r\n    background: rgba(246, 246, 246, 0.26);\r\n    padding: 0.5rem;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n    box-shadow: 0px -3px 17px 0px #a79a9a;\r\n    z-index: 100;\r\n}\r\n\r\n.header-date-time {\r\n    display: inline-block;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    line-height: 3rem;\r\n    padding: 0 0.5rem;\r\n    border-top: 1px solid #777;\r\n    border-bottom: 1px solid #777;\r\n    margin: 0 0 0 1rem;\r\n}\r\n\r\n.i-like {\r\n    display: inline-block;\r\n    margin: 0;\r\n    margin-right: 2rem;\r\n    line-height: 3rem;\r\n    font-size: 2rem;\r\n    color: #000;\r\n    text-decoration: none;\r\n}\r\n\r\n.article {\r\n    /*position: fixed;*/\r\n    width: 100%;\r\n    height: calc(100% - 5rem);\r\n    /*overflow-y: scroll;*/\r\n    background: #f6f6f6;\r\n    padding-top: 4.5rem;\r\n}\r\n\r\n.date-show {\r\n    width: 6rem;\r\n    color: #fff;\r\n    text-align: center;\r\n    padding: 0.3rem;\r\n    margin: 1rem auto;\r\n    background: #1d87fc;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.pix-block {\r\n    margin-bottom: 2rem;\r\n    background: #fff;\r\n    box-shadow: 15px 2px 17px 0px #a79a9a;\r\n}\r\n\r\n.pix-block img {\r\n    width: 100%;\r\n    background: url(\"http://i1.piimg.com/588926/9723f12607f59ed0.gif\") no-repeat center\r\n}\r\n\r\n.pix-opera {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}\r\n\r\n.pix-opera p {\r\n    display: inline-block;\r\n}\r\n\r\n.pix-content {\r\n    margin: 0 0 0 0.5rem;\r\n    line-height: 3rem;\r\n}\r\n\r\n.pix-like {\r\n    margin-right: 0.5rem;\r\n    font-size: 2rem;\r\n    margin: 0 1rem 0 0;\r\n    line-height: 3rem;\r\n}", ""]);
 
 // exports
 
@@ -764,25 +764,25 @@ if(true) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wtools__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__static_picture_json__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__static_picture_json__);
 
-
+// import pixs from '../../static/picture.json'
 
 let deviceWidth = document.body.offsetWidth,
-    pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
+    pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img"),
+    pixs,//json 文件
+    pix//class 对象
 
 class pixShow {
     constructor() {
-        this.pictureShow()
+        this.pictureRender()
         this.loadImg(pics)
         this.dateChange()
     }
-    pictureShow() {
+    pictureRender() {//渲染图片
         __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removaAllChildNodes(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics"))
         let oFrag = document.createDocumentFragment()
         let keys = []
-        for (let key in __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a) {
+        for (let key in pixs) {
             keys.push(key)
         }
         keys.sort(function (x, y) {
@@ -795,7 +795,7 @@ class pixShow {
             dateShow.id = p
             dateShow.innerHTML = p.substr(0, 4) + "/" + p.substr(4, 2) + "/" + p.substr(6)
             oFrag.appendChild(dateShow)
-            for (let i in __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p]) {
+            for (let i in pixs[p]) {
                 // console.log(pixs[p][i].pixId)
                 let pLi = document.createElement("div"),
                     pLiImg = document.createElement("img"),
@@ -803,15 +803,14 @@ class pixShow {
                     pLiContent = document.createElement("p"),
                     pLiLike = document.createElement("p")
                 pLi.className = "pix-block"
-                pLi.id = __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixId
-                pLiImg.height = deviceWidth / __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixWidth * __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixHeight
-                pLiImg.dataset.src = __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixPath
+                pLi.id = pixs[p][i].pixId
+                pLiImg.height = deviceWidth / pixs[p][i].pixWidth * pixs[p][i].pixHeight
+                pLiImg.dataset.src = pixs[p][i].pixPath
                 pLiOpera.className = "pix-opera"
                 pLiContent.className = "pix-content"
-                pLiContent.innerHTML = __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixDes
-                pLiLike.className = "pix-like"
-                pLiLike.innerHTML = "like"
-                pLiLike.style.color = __WEBPACK_IMPORTED_MODULE_1__static_picture_json___default.a[p][i].pixIslike === true ? "#f00" : "#000"
+                pLiContent.innerHTML = pixs[p][i].pixDes
+                pLiLike.className = "pix-like iconfont icon-xihuan"
+                pLiLike.style.color = pixs[p][i].pixIslike === true ? "#f00" : "#000"
                 pLiOpera.appendChild(pLiContent)
                 pLiOpera.appendChild(pLiLike)
                 pLi.appendChild(pLiImg)
@@ -856,15 +855,34 @@ class pixShow {
     }
 }
 
-const pix = new pixShow()
+function loadJson() {
+    let xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+           pixs= JSON.parse(xhr.responseText)
+           pix = new pixShow()
+        }
+    }
+    xhr.open("GET", "https://www.easy-mock.com/mock/591a6ae69aba4141cf2322e8/picture/list", true);
+    xhr.send();
+}
 
+(function () {
+    loadJson()
+}())
 
 window.onscroll = function () {
     pix.loadImg(pics)
     pix.dateChange()
+
 }
 
-window.addEventListener("orientationchange", function () {
+window.addEventListener("resize", function () {
     // console.log("orientationchange")
     let getAllPic = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
     for (let i = 0; i < getAllPic.length; i++) {
@@ -3593,155 +3611,6 @@ const w = {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = w;
 
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"20170508": [
-		{
-			"pixId": 2017050904,
-			"pixDes": "瞎几把画-河畔",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/river.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017050905,
-			"pixDes": "瞎几把画-雪景",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/snow.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017050906,
-			"pixDes": "瞎几把画-河边石头",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/stone.jpg",
-			"pixWidth": 969,
-			"pixHeight": 591
-		},
-		{
-			"pixId": 2017050907,
-			"pixDes": "瞎几把画-街边",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/street.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017050908,
-			"pixDes": "瞎几把画-浪",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/wave.jpg",
-			"pixWidth": 969,
-			"pixHeight": 533
-		},
-		{
-			"pixId": 2017050909,
-			"pixDes": "瞎几把画-科技",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/techknowledge.jpg",
-			"pixWidth": 969,
-			"pixHeight": 494
-		}
-	],
-	"20170509": [
-		{
-			"pixId": 2017050901,
-			"pixDes": "校园-河边",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/riverside.jpg",
-			"pixWidth": 3264,
-			"pixHeight": 1836
-		},
-		{
-			"pixId": 2017050902,
-			"pixDes": "星际穿越-卡冈图亚",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/gargantua.png",
-			"pixWidth": 1920,
-			"pixHeight": 1042
-		},
-		{
-			"pixId": 2017050903,
-			"pixDes": "梵高-星空",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/test.png",
-			"pixWidth": 1920,
-			"pixHeight": 1051
-		}
-	],
-	"20170510": [
-		{
-			"pixId": 2017051001,
-			"pixDes": "守望先锋-源氏",
-			"pixIslike": true,
-			"pixPath": "http://115.159.143.109/pictures/genji.png",
-			"pixWidth": 529,
-			"pixHeight": 488
-		},
-		{
-			"pixId": 2017051002,
-			"pixDes": "高淳体育馆",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/sports.jpg",
-			"pixWidth": 6016,
-			"pixHeight": 4000
-		},
-		{
-			"pixId": 2017051003,
-			"pixDes": "瞎几把画-眼镜",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/glass.jpg",
-			"pixWidth": 1920,
-			"pixHeight": 1051
-		},
-		{
-			"pixId": 2017051004,
-			"pixDes": "瞎几把画-湖泊",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/lake.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017051005,
-			"pixDes": "瞎几把画-湖边树",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/lake-trees.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017051006,
-			"pixDes": "瞎几把画-灯光",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/light.jpg",
-			"pixWidth": 969,
-			"pixHeight": 545
-		},
-		{
-			"pixId": 2017051007,
-			"pixDes": "瞎几把画-河道",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/mountain.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		},
-		{
-			"pixId": 2017051008,
-			"pixDes": "瞎几把画-夜",
-			"pixIslike": false,
-			"pixPath": "http://115.159.143.109/pictures/night.jpg",
-			"pixWidth": 969,
-			"pixHeight": 606
-		}
-	]
-};
 
 /***/ })
 /******/ ]);
