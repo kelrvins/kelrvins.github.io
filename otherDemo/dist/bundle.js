@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "068b8b11f7cd2dc6bc13"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "909ff00935acba1af425"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -785,7 +785,7 @@ class pixShow {
         for (let key in pixs) {
             keys.push(key)
         }
-        keys.sort(function (x, y) {
+        keys.sort( (x,y) => {
             return y - x
         })
         for (let k in keys) {
@@ -823,23 +823,23 @@ class pixShow {
     loadImg(imgs) {
         for (let i = 0, len = imgs.length; i < len; i++) {
             if ((imgs[i].getBoundingClientRect().top - 200) < document.documentElement.clientHeight && !imgs[i].isload) {
-                (function (i) {
+                ( (i) => {
                     imgs[i].isload = true
-                    setTimeout(function () {
+                    setTimeout( () => {
                         if (imgs[i].dataset) {
                             pix.aftLoadImg(imgs[i], imgs[i].dataset.src);
                         } else {
                             pix.aftLoadImg(imgs[i], imgs[i].getAttribute("data-src"));
                         }
                     }, 500)
-                    imgs[i].style.cssText = "transition: 1s; opacity: 1;"
+                    imgs[i].style.cssText = "transition: 0.5s; opacity: 1;"
                 })(i);
             }
         }
     }
     aftLoadImg(obj, url) {
         let oImg = new Image();
-        oImg.onload = function () {
+        oImg.onload =  () => {
             obj.src = oImg.src;
         }
         oImg.src = url;
@@ -855,14 +855,14 @@ class pixShow {
     }
 }
 
-function loadJson() {
+const loadJson= () => {
     let xhr;
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();
     } else {
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange =  () =>{
         if (xhr.readyState == 4 && xhr.status == 200) {
            pixs= JSON.parse(xhr.responseText)
            pix = new pixShow()
@@ -876,13 +876,13 @@ function loadJson() {
     loadJson()
 }())
 
-window.onscroll = function () {
+window.onscroll =  () =>{
     pix.loadImg(pics)
     pix.dateChange()
 
 }
 
-window.addEventListener("resize", function () {
+window.addEventListener("resize",  () => {
     // console.log("orientationchange")
     let getAllPic = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
     for (let i = 0; i < getAllPic.length; i++) {
