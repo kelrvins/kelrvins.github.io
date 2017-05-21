@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8294ff90486d0b67d4d7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7e257b2b8fabca0df2df"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -716,7 +716,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, "html {\r\n    font-size: 10px\r\n}\r\n\r\n@media screen and (min-width:480px) and (max-width:639px) {\r\n    html {\r\n        font-size: 15px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:640px) and (max-width:719px) {\r\n    html {\r\n        font-size: 20px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:720px) and (max-width:749px) {\r\n    html {\r\n        font-size: 22.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:750px) and (max-width:799px) {\r\n    html {\r\n        font-size: 23.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:800px) and (max-width:959px) {\r\n    html {\r\n        font-size: 25px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:960px) and (max-width:1079px) {\r\n    html {\r\n        font-size: 30px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:1080px) {\r\n    html {\r\n        font-size: 32px\r\n    }\r\n}\r\n\r\n\r\n/*.header-top{\r\n  position: fixed;\r\n  height: 4.5rem;\r\n  width: 100%;\r\n  background: #000;\r\n}*/\r\n\r\nnav {\r\n    position: fixed;\r\n    width: 100%;\r\n    background: rgba(246, 246, 246, 0.26);\r\n    padding: 0.5rem;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n    box-shadow: 0px -3px 17px 0px #a79a9a;\r\n    z-index: 100;\r\n}\r\n\r\n.header-date-time {\r\n    display: inline-block;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    line-height: 3rem;\r\n    padding: 0 0.5rem;\r\n    border-top: 1px solid #777;\r\n    border-bottom: 1px solid #777;\r\n    margin: 0 0 0 1rem;\r\n}\r\n\r\n.i-like {\r\n    display: inline-block;\r\n    margin: 0;\r\n    margin-right: 2rem;\r\n    line-height: 3rem;\r\n    font-size: 2rem;\r\n    color: #000;\r\n    text-decoration: none\r\n}\r\n\r\n.like-F00{\r\n    color: #f00;\r\n}\r\n.article {\r\n    /*position: fixed;*/\r\n    width: 100%;\r\n    height: calc(100% - 5rem);\r\n    /*overflow-y: scroll;*/\r\n    background: #f6f6f6;\r\n    padding-top: 4.5rem;\r\n}\r\n\r\n.date-show {\r\n    width: 6rem;\r\n    color: #fff;\r\n    text-align: center;\r\n    padding: 0.3rem;\r\n    margin: 1rem auto;\r\n    background: #1d87fc;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.pix-block {\r\n    margin-bottom: 2rem;\r\n    background: #fff;\r\n    box-shadow: 15px 2px 17px 0px #a79a9a;\r\n}\r\n\r\n.pix-block img {\r\n    width: 100%;\r\n    background: url(\"http://i1.piimg.com/588926/9723f12607f59ed0.gif\") no-repeat center\r\n}\r\n\r\n.pix-opera {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}\r\n\r\n.pix-opera p {\r\n    display: inline-block;\r\n}\r\n\r\n.pix-content {\r\n    margin: 0 0 0 0.5rem;\r\n    line-height: 3rem;\r\n}\r\n\r\n.pix-like {\r\n    margin-right: 0.5rem;\r\n    font-size: 2rem;\r\n    margin: 0 1rem 0 0;\r\n    line-height: 3rem;\r\n}", ""]);
+exports.push([module.i, "html {\r\n    font-size: 10px\r\n}\r\n\r\n@media screen and (min-width:480px) and (max-width:639px) {\r\n    html {\r\n        font-size: 15px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:640px) and (max-width:719px) {\r\n    html {\r\n        font-size: 20px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:720px) and (max-width:749px) {\r\n    html {\r\n        font-size: 22.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:750px) and (max-width:799px) {\r\n    html {\r\n        font-size: 23.5px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:800px) and (max-width:959px) {\r\n    html {\r\n        font-size: 25px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:960px) and (max-width:1079px) {\r\n    html {\r\n        font-size: 30px\r\n    }\r\n}\r\n\r\n@media screen and (min-width:1080px) {\r\n    html {\r\n        font-size: 32px\r\n    }\r\n}\r\n\r\n\r\n/*.header-top{\r\n  position: fixed;\r\n  height: 4.5rem;\r\n  width: 100%;\r\n  background: #000;\r\n}*/\r\n\r\nnav {\r\n    position: fixed;\r\n    width: 100%;\r\n    background: rgba(246, 246, 246, 0.26);\r\n    padding: 0.5rem;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n    box-shadow: 0px -3px 17px 0px #a79a9a;\r\n    z-index: 100;\r\n}\r\n\r\n.header-date-time {\r\n    display: inline-block;\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    line-height: 3rem;\r\n    padding: 0 0.5rem;\r\n    border-top: 1px solid #777;\r\n    border-bottom: 1px solid #777;\r\n    margin: 0 0 0 1rem;\r\n}\r\n\r\n.i-show-style{\r\n    line-height: 3rem;\r\n    font-size: 2rem;\r\n    color: #1d87fc;\r\n}\r\n\r\n.i-like {\r\n    display: inline-block;\r\n    margin: 0;\r\n    margin-right: 2rem;\r\n    line-height: 3rem;\r\n    font-size: 2rem;\r\n    color: #000;\r\n    text-decoration: none;\r\n}\r\n\r\n.article {\r\n    /*position: fixed;*/\r\n    width: 100%;\r\n    height: calc(100% - 5rem);\r\n    /*overflow-y: scroll;*/\r\n    background: #f6f6f6;\r\n    padding-top: 4.5rem;\r\n}\r\n\r\n.date-show {\r\n    width: 6rem;\r\n    color: #fff;\r\n    text-align: center;\r\n    padding: 0.3rem;\r\n    margin: 1rem auto;\r\n    background: #1d87fc;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.pix-block {\r\n    margin-bottom: 2rem;\r\n    background: #fff;\r\n    box-shadow: 15px 2px 17px 0px #a79a9a;\r\n}\r\n\r\n.pix-block img {\r\n    width: 100%;\r\n    background: url(\"http://i1.piimg.com/588926/9723f12607f59ed0.gif\") no-repeat center\r\n}\r\n\r\n.pix-opera {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n        -ms-flex-pack: justify;\r\n            justify-content: space-between;\r\n}\r\n\r\n.like-F00{\r\n    color: #F00;\r\n}\r\n.pix-opera p {\r\n    display: inline-block;\r\n}\r\n\r\n.pix-content {\r\n    margin: 0 0 0 0.5rem;\r\n    line-height: 3rem;\r\n}\r\n\r\n.pix-like {\r\n    margin-right: 0.5rem;\r\n    font-size: 2rem;\r\n    margin: 0 1rem 0 0;\r\n    line-height: 3rem;\r\n}\r\n\r\n.footer{\r\n    background: #1d87fc;\r\n    padding:2rem 0; \r\n}\r\n.footer p{\r\n    margin: 0;\r\n    text-align: center;\r\n    color: #fff;\r\n}\r\n.github-link{\r\n    color: #fff;\r\n    text-decoration: none;\r\n    margin-left: 2rem;\r\n}", ""]);
 
 // exports
 
@@ -768,187 +768,214 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import pixs from '../../static/picture.json'
 
 let deviceWidth = document.body.offsetWidth,
-  pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img"),
-  pixs, //json 文件
-  pix, //class 对象
-  showLike = false,
-  localLikeStr
+    pics = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img"),
+    pixs, //json 文件
+    pix, //class 对象
+    showLike = false, //
+    localLikeStr, //localstorage 
+    waterfall = true //t:waterfall  f:paging  是否为瀑布流
 
 class pixShow {
-  constructor() {
-    this.pictureRender()
-    this.loadImg(pics)
-    this.dateChange()
-  }
-  pictureRender() { //渲染图片
-    __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removaAllChildNodes(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics"))
-    let oFrag = document.createDocumentFragment()
-    let keys = []
-    for (let key in pixs) {
-      keys.push(key)
+    constructor() {
+        this.pictureRender()
+        this.loadImg(pics)
+        this.dateChange()
     }
-    keys.sort((x, y) => {
-      return y - x
-    })
-    for (let k in keys) {
-      let p = keys[k]
-      let dateShow = document.createElement("div")
-      dateShow.className = "date-show"
-      dateShow.id = p
-      dateShow.innerHTML = p.substr(0, 4) + "/" + p.substr(4, 2) + "/" + p.substr(6)
-      if (!showLike) {
-        oFrag.appendChild(dateShow)
-      }
-      for (let i in pixs[p]) {
-        // console.log(pixs[p][i].pixId)
-        if (showLike && localLikeStr.indexOf(pixs[p][i].pixId) < 0) {
-          // console.log("is"+pixs[p][i].pixId)
-          break
+    pictureRender() { //渲染图片
+        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removaAllChildNodes(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics"))
+        let oFrag = document.createDocumentFragment()
+        let keys = []
+        for (let key in pixs) {
+            keys.push(key)
         }
-        // console.log(pixs[p][i].pixId)
-        let pLi = document.createElement("div"),
-          pLiImg = document.createElement("img"),
-          pLiOpera = document.createElement("div"),
-          pLiContent = document.createElement("p"),
-          pLiLike = document.createElement("label")
-        pLi.className = "pix-block"
-        pLi.id = pixs[p][i].pixId
-        pLiImg.height = deviceWidth / pixs[p][i].pixWidth * pixs[p][i].pixHeight
-        pLiImg.dataset.src = pixs[p][i].pixPath
-        pLiOpera.className = "pix-opera"
-        pLiContent.className = "pix-content"
-        pLiContent.innerHTML = pixs[p][i].pixDes
-        pLiLike.className = "pix-like iconfont icon-xihuan"
-        pLiLike.dataset.id = pixs[p][i].pixId
-        pLiLike.id = "like" + pixs[p][i].pixId
-        pLiOpera.appendChild(pLiContent)
-        pLiOpera.appendChild(pLiLike)
-        pLi.appendChild(pLiImg)
-        pLi.appendChild(pLiOpera)
-        oFrag.appendChild(pLi)
-      }
-    }
-    __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").appendChild(oFrag)
-  }
-  loadImg(imgs) {
-    for (let i = 0, len = imgs.length; i < len; i++) {
-      if ((imgs[i].getBoundingClientRect().top - 200) < document.documentElement.clientHeight && !imgs[i].isload) {
-        ((i) => {
-          imgs[i].isload = true
-          setTimeout(() => {
-            if (imgs[i].dataset) {
-              pix.aftLoadImg(imgs[i], imgs[i].dataset.src);
-            } else {
-              pix.aftLoadImg(imgs[i], imgs[i].getAttribute("data-src"));
+        keys.sort((x, y) => {
+            return y - x
+        })
+        for (let k in keys) {
+            let p = keys[k]
+            let dateShow = document.createElement("div")
+            dateShow.className = "date-show"
+            dateShow.id = p
+            dateShow.innerHTML = p.substr(0, 4) + "/" + p.substr(4, 2) + "/" + p.substr(6)
+            if (!showLike) {
+                oFrag.appendChild(dateShow)
             }
-          }, 500)
-          imgs[i].style.cssText = "transition: 0.5s; opacity: 1;"
-        })(i);
-      }
+            for (let i in pixs[p]) {
+                if (showLike && localLikeStr.indexOf(pixs[p][i].pixId) < 0) {
+                    break
+                }
+                let pLi = document.createElement("div"),
+                    pLiImg = document.createElement("img"),
+                    pLiOpera = document.createElement("div"),
+                    pLiContent = document.createElement("p"),
+                    pLiLike = document.createElement("label")
+                pLi.className = "pix-block"
+                pLi.id = pixs[p][i].pixId
+                pLiImg.height = deviceWidth / pixs[p][i].pixWidth * pixs[p][i].pixHeight
+                pLiImg.dataset.src = pixs[p][i].pixPath
+                pLiOpera.className = "pix-opera"
+                pLiContent.className = "pix-content"
+                pLiContent.innerHTML = pixs[p][i].pixDes
+                pLiLike.className = "pix-like iconfont icon-xihuan"
+                pLiLike.dataset.id = pixs[p][i].pixId
+                pLiLike.id = "like" + pixs[p][i].pixId
+                if (window.localStorage && localStorage.like) {
+                    if (localLikeStr.indexOf(pixs[p][i].pixId) >= 0) {
+                        pLiLike.classList.add("like-F00")
+                    }
+                }
+                pLiOpera.appendChild(pLiContent)
+                pLiOpera.appendChild(pLiLike)
+                pLi.appendChild(pLiImg)
+                pLi.appendChild(pLiOpera)
+                oFrag.appendChild(pLi)
+            }
+        }
+        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").appendChild(oFrag)
     }
-  }
-  aftLoadImg(obj, url) {
-    let oImg = new Image();
-    oImg.onload = () => {
-      obj.src = oImg.src;
+    loadImg(imgs) {
+        for (let i = 0, len = imgs.length; i < len; i++) {
+            if ((imgs[i].getBoundingClientRect().top - 200) < document.documentElement.clientHeight && !imgs[i].isload) {
+                ((i) => {
+                    imgs[i].isload = true
+                    setTimeout(() => {
+                        if (imgs[i].dataset) {
+                            pix.aftLoadImg(imgs[i], imgs[i].dataset.src);
+                        } else {
+                            pix.aftLoadImg(imgs[i], imgs[i].getAttribute("data-src"));
+                        }
+                    }, 500)
+                    imgs[i].style.cssText = "transition: 0.5s; opacity: 1;"
+                })(i);
+            }
+        }
     }
-    oImg.src = url;
-  }
-  dateChange() {
-    let dateTitle = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$$(".date-show")
-    for (let i = 0; i < dateTitle.length; i++) {
-      if (dateTitle[i].getBoundingClientRect().top < 100 && dateTitle[i].getBoundingClientRect().top > 0) {
-        // console.log(dateTitle[i].textContent)
-        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#headerDateTime").innerHTML = dateTitle[i].textContent.substr(-2)
-      }
+    aftLoadImg(obj, url) {
+        let oImg = new Image();
+        oImg.onload = () => {
+            obj.src = oImg.src;
+        }
+        oImg.src = url;
     }
-  }
+    dateChange() {
+        let dateTitle = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$$(".date-show")
+        for (let i = 0; i < dateTitle.length; i++) {
+            if (dateTitle[i].getBoundingClientRect().top < 100 && dateTitle[i].getBoundingClientRect().top > 0) {
+                // console.log(dateTitle[i].textContent)
+                __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#headerDateTime").innerHTML = dateTitle[i].textContent.substr(-2)
+            }
+        }
+    }
 }
 
 const loadJson = () => {
-  let xhr;
-  if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
-  } else {
-    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      pixs = JSON.parse(xhr.responseText)
-      pix = new pixShow()
+    let xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
-  }
-  xhr.open("GET", "https://www.easy-mock.com/mock/591a6ae69aba4141cf2322e8/picture/list", true);
-  xhr.send();
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            pixs = JSON.parse(xhr.responseText)
+            pix = new pixShow()
+        }
+    }
+    xhr.open("GET", "https://www.easy-mock.com/mock/591a6ae69aba4141cf2322e8/picture/list", true);
+    xhr.send();
 }
 
 (function () {
-  loadJson()
+    if (window.localStorage) {
+        if (localStorage.like) {
+            localLikeStr = localStorage.like
+        } else {
+            console.log("no local like")
+        }
+    } else {
+        alert("no  localstorage")
+    }
+    loadJson()
 }())
 
 window.onscroll = () => {
-  pix.loadImg(pics)
-  pix.dateChange()
+    pix.loadImg(pics)
+    pix.dateChange()
+
 }
 
 __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].addEvent(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics"), "click", function (e) {
-  if (e.target && e.target.nodeName == "LABEL") {
-    if (!__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].hasClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")) {
-      __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].addClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")
-      if (window.localStorage) {
-        if (localStorage.like) {
-          if (localStorage.like.indexOf(e.target.dataset.id) < 0) {
-            localStorage.setItem("like", localStorage.like += "," + e.target.dataset.id);
-          }
+    if (e.target && e.target.nodeName == "LABEL") {
+        if (!__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].hasClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")) {
+            __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].addClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")
+            if (window.localStorage) {
+                if (localStorage.like) {
+                    if (localStorage.like.indexOf(e.target.dataset.id) < 0) {
+                        localStorage.setItem("like", localStorage.like += "," + e.target.dataset.id);
+                    }
+                } else {
+                    localStorage.setItem("like", e.target.dataset.id);
+                }
+            }
         } else {
-          localStorage.setItem("like", e.target.dataset.id);
+            __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removeClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")
+            if (localStorage.like) {
+                let cancelNo = localStorage.like.indexOf(e.target.dataset.id),
+                    localLike = localStorage.like
+                if (cancelNo == 0) {
+                    localStorage.setItem("like", localLike.substr(cancelNo + 11));
+                } else {
+                    localStorage.setItem("like", localLike.substr(0, cancelNo - 1) + localLike.substr(cancelNo + 10));
+                }
+            }
         }
-      }
-    } else {
-      __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].removeClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#" + e.target.id), "like-F00")
-      if (localStorage.like) {
-        let cancelNo = localStorage.like.indexOf(e.target.dataset.id),
-          localLike = localStorage.like
-        if (cancelNo == 0) {
-          localStorage.setItem("like", localLike.substr(cancelNo + 11));
-        } else {
-          localStorage.setItem("like", localLike.substr(0, cancelNo - 1) + localLike.substr(cancelNo + 10));
-        }
-      }
     }
-  }
 })
+
 
 __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].addEvent(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#iLike"), "click", function () {
-  if (!showLike) {
-    if (window.localStorage && localStorage.like) {
-      // console.log(localStorage.like)
-      let localLike = localStorage.like.split(',')
-      let localLikeArray = []
-      for (let i = 0; i < localLike.length; i++) {
-        localLikeArray[i] = parseInt(localLike[i], 10);
-      }
-      localLikeStr = localLikeArray.join('')
-      // console.log(localLikeStr)
-      showLike = true
-      pix.pictureRender()
+    if (!showLike) {
+        if (window.localStorage && localStorage.like) {
+            localLikeStr = localStorage.like.split(',').join('')
+            console.log(localLikeStr)
+            showLike = true
+            __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].replaceClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#iLike"), "icon-xihuan", "icon-exit")
+            pix.pictureRender()
+            pix.loadImg(pics)
+        } else {
+            alert("你还没有收藏。先收藏一个在点试试")
+        }
     } else {
-      alert("not loaclstorage")
+        showLike = false
+        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].replaceClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#iLike"), "icon-exit", "icon-xihuan")
+        pix.pictureRender()
+        pix.loadImg(pics)
     }
-  } else {
-    showLike = false
-    pix.pictureRender()
-  }
 })
 
+const getLocalStorage = (key) => {
+    return window.localStorage && window.localStorage.getItem(key);
+}
 window.addEventListener("resize", () => {
-  // console.log("orientationchange")
-  let getAllPic = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
-  for (let i = 0; i < getAllPic.length; i++) {
-    getAllPic[i].height = (getAllPic[i].width / deviceWidth) * getAllPic[i].height
-  }
-  deviceWidth = document.body.offsetWidth
+    // console.log("orientationchange")
+    let getAllPic = __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#allPics").getElementsByTagName("img")
+    for (let i = 0; i < getAllPic.length; i++) {
+        getAllPic[i].height = (getAllPic[i].width / deviceWidth) * getAllPic[i].height
+    }
+    deviceWidth = document.body.offsetWidth
 });
+
+
+__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].addEvent(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#showStyleChange"), "click", function () {
+    alert("分页还没做。。")
+    if (waterfall) {
+        waterfall = false
+        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].replaceClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#showStyleChange"), "icon-pubu", "icon-ccgl-dingdanchaibing-3")
+    } else {
+        waterfall = true
+        __WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].replaceClass(__WEBPACK_IMPORTED_MODULE_0__wtools__["a" /* w */].$("#showStyleChange"), "icon-ccgl-dingdanchaibing-3", "icon-pubu")
+    }
+})
 
 /***/ }),
 /* 4 */
