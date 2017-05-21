@@ -1,0 +1,141 @@
+.clear:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    content: ""
+}
+
+.clear {
+    zoom: 1
+}
+
+.div-center {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+
+/*进度条*/
+
+.progress-show {
+    border-bottom: 1px solid #444;
+}
+
+.group-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    padding: 40px 0 5px;
+}
+
+.step-error {
+    color: #f00 !important;
+}
+
+.step-success {
+    color: #30ad30 !important;
+}
+
+.one-group {
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none
+}
+
+.one-group:hover p, .one-group:hover {
+    color: #000;
+    text-decoration: none
+}
+
+.one-group span {
+    font-size: 25px;
+    color: #3879d9;
+    border-radius: 100%;
+    background: #fff;
+}
+
+.one-group i {
+    font-size: 25px;
+    color: #aaa
+}
+
+.gl-bgline {
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    /*border-radius: 0.2rem;
+    background-color: #3879d9;*/
+    margin-top: 6px;
+    z-index: -1;
+}
+
+.progress {
+    height: 10px;
+}
+
+.text-hidden {
+    visibility: hidden
+}
+/*进度条 end*/
+
+
+/*注意事项*/
+
+.notice-content {
+    padding: 1rem;
+}
+
+.notice-text-title {
+    margin: 0;
+    font-weight: bold
+}
+
+.notice-text {
+    color: #f00;
+}
+
+
+/*注意事项 end*/
+
+
+/*补充意见*/
+
+.add-comments {
+    background: #fcf8e3;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+}
+.add-comments-title{
+    font-weight: bold
+}
+
+.add-comments-title, .add-comments-text {
+    padding: 0;
+}
+
+
+/*补充意见 end*/
+
+
+/*表格*/
+
+.add-item-wrap {
+    float: right !important;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.add-item {
+    color: #5cb85c;
+}
+
+.upload-btn {
+    margin: 0 0.3rem;
+}
+
+/*表格 end*/
