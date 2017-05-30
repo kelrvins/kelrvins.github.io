@@ -1,119 +1,108 @@
 let steps, //步骤json
     currentStep = 1, //当前步骤序号
     currentStepName = 1, //当前步骤名字
+    currentFileDes, //当前文件描述
     completeStep = 0, //已完成步骤
     totalStep = 0, //总步骤
-    jump = false, //初始化
     clickEle, //被点击的表格行
     clickInput, //点击的选择文件按钮
-    clickRowId //被点击行元素的fileid
+    clickRowId, //被点击行元素的fileid
+    clickRowDes //被点击行元素的描述
 
 //加载步骤数据
-const loadStepsData = () => {
-    let result = $.ajax({
+function loadStepsData() {
+    $.ajax({
         url: "https://www.easy-mock.com/mock/591c6b989aba4141cf25b708/step/list",
-        async: false
+        async: false,
+        type: 'get',
+        dataType: 'json',
+        success: function (data) {
+            steps = data;
+            for (let key in steps) {
+                totalStep++;
+            }
+            renderSteps();
+        },
+        error: function () {
+            alert('error');
+        }
     });
-    steps = JSON.parse(result.responseText)
-    for (let key in steps) {
-        totalStep++
-    }
-    renderSteps()
 }
 //绘制步骤
-const renderSteps = () => {
-    $("#groupList").empty()
-    let oFrag = document.createDocumentFragment()
-    let bGline = document.createElement("div"),
-        dPro = document.createElement("div"),
-        dProBar = document.createElement("div")
-    bGline.className = "gl-bgline"
-    dPro.className = "progress"
-    bGline.append(dPro)
-    dProBar.className = "progress-bar progress-bar-success progress-bar-striped"
-    dProBar.id = "progressBar"
-    dProBar.style.width = "0"
-    dPro.append(dProBar)
-    oFrag.append(bGline)
+function renderSteps() {
+    $("#groupList").empty();
+    let oFrag = document.createDocumentFragment();
+    let bGline = document.createElement("div");
+    let dPro = document.createElement("div");
+    let dProBar = document.createElement("div");
+    bGline.className = "gl-bgline";
+    dPro.className = "progress";
+    bGline.append(dPro);
+    dProBar.className = "progress-bar progress-bar-success progress-bar-striped";
+    dProBar.id = "progressBar";
+    dProBar.style.width = "0";
+    dPro.append(dProBar);
+    oFrag.append(bGline);
 
     for (let i in steps) {
-        let iDiv = document.createElement("label"),
-            iIcon = document.createElement("span"),
-            iP = document.createElement("p"),
-            iI = document.createElement("i")
-        iDiv.className = "one-group"
-        iDiv.id = "step" + steps[i].stepID
-        steps[i].stepStatus == true ? (completeStep = i) : ""
-        iIcon.className = steps[i].stepStatus == true ? "glyphicon glyphicon-ok-sign step-success" : "glyphicon glyphicon-ok-sign"
-        iDiv.append(iIcon)
-        iP.innerHTML = steps[i].stepName
-        iDiv.append(iP)
-        iI.className = "glyphicon glyphicon-triangle-top text-hidden"
-        iDiv.append(iI)
-        oFrag.append(iDiv)
+        let iDiv = document.createElement("a");
+        let iIcon = document.createElement("span");
+        let iP = document.createElement("p");
+        let iI = document.createElement("i");
+        iDiv.className = "one-group";
+        iDiv.href = steps[i].stepLink;
+        iDiv.id = "step" + steps[i].stepID;
+        steps[i].stepStatus == true ? (completeStep = i) : "";
+        iIcon.className = steps[i].stepStatus == true ? "glyphicon glyphicon-ok-sign step-success" : "glyphicon glyphicon-ok-sign";
+        iDiv.append(iIcon);
+        iP.innerHTML = steps[i].stepName;
+        iDiv.append(iP);
+        iI.className = "glyphicon glyphicon-triangle-top text-hidden";
+        iDiv.append(iI);
+        oFrag.append(iDiv);
     }
+    // console.log(oFrag)
+    $("#groupList").append(oFrag);
+    // console.log($("#groupList"))
 
-    $("#groupList").append(oFrag)
-
-    drawBgLine()
+    drawBgLine();
     //自然进入此页自动跳转到最近一个未完成项目，
     //如果是点击步骤进入则进入相应步骤
-    if (!jump) {
-        completeStep == totalStep ? currentStep = parseInt(completeStep) : currentStep = parseInt(completeStep) + 1
-    }
-    $(".one-group")[currentStep - 1].lastChild.classList.remove("text-hidden")
+    // if (!jump) {
+    completeStep == totalStep ? currentStep = parseInt(completeStep, 10) : currentStep = parseInt(completeStep, 10) + 1;
+    // }
+    $(".one-group")[currentStep - 1].lastChild.classList.remove("text-hidden");
     //当前步骤名字
-    currentStepName = steps[currentStep].stepName
-    //注意事项
-    steps[currentStep].stepNotice.trim() == "" ? $(".notice-content").css('display', 'none') : ($(".notice-content").css("display", ""), $("#noticeText").html(steps[currentStep].stepNotice))
-    //补充意见
-    steps[currentStep].stepView.trim() == "" ? $(".add-comments").css("display", "none") : ($(".add-comments").css("display", ""), $("#addCommentsText").html(steps[currentStep].stepView))
+    currentStepName = steps[currentStep].stepName;
+    //大标题
+    steps[currentStep].tableBtitle.trim() == "" ? $(".title-content").css('display', 'none') : ($(".title-content").css("display", ""), $("#bTitleText").html(steps[currentStep].tableBtitle));
+    //小标题
+    steps[currentStep].tableStitle.trim() == "" ? $(".title-text").css('display', 'none') : ($(".title-text").css("display", ""), $("#sTitleText").html(steps[currentStep].tableStitle));
     //检查是否可以添加数据
-    steps[currentStep].stepCanAddFile == true ? $("#addItemWrap").css("display", "") : $("#addItemWrap").css("display", "none")
+    steps[currentStep].stepCanAddFile == true ? ($("#addItemWrap").css("display", ""), currentFileDes = steps[currentStep].fileDes) : $("#addItemWrap").css("display", "none");
     //填充表格
-    fillTable()
+    fillTable();
 }
+
 //绘制进度条
 function drawBgLine() {
     switch (completeStep) {
         case 0:
-            $("#progressBar").width(100 / totalStep / 2 + "%")
-            break
+            $("#progressBar").width(100 / totalStep / 2 + "%");
+            break;
         case totalStep:
-            $("#progressBar").width("100%")
-            break
+            $("#progressBar").width("100%");
+            break;
         default:
-            $("#progressBar").width(100 / totalStep / 2 + 100 / totalStep * completeStep + "%")
-            break
+            $("#progressBar").width(100 / totalStep / 2 + 100 / totalStep * completeStep + "%");
+            break;
     }
 }
 
-//监听步骤点击事件
-$("#groupList").click(function (e) {
-    if (e.target && e.target.nodeName == "LABEL") {
-        currentId = e.target.id
-        jump = true
-    }
-    if (e.target && e.target.parentNode.nodeName == "LABEL") {
-        currentId = e.target.parentNode.id
-        jump = true
-    }
-    if (jump) {
-        for (let i in steps) {
-            if ("step" + steps[i].stepID == currentId && i <= (parseInt(completeStep) + 1)) {
-                currentStep = parseInt(i)
-                renderSteps()
-                break
-            }
-        }
-    }
-})
-
-
 //表格填充
 function fillTable() {
-    let urlT = "https://www.easy-mock.com/mock/591c6b989aba4141cf25b708/step/tableData" + currentStep % 2;
-    // console.log(urlT);
+    console.log("fillTable")
+    let urlT = "https://www.easy-mock.com/mock/591c6b989aba4141cf25b708/step/tableData1";
     $('#table').bootstrapTable({
         url: urlT,
         dataType: "json",
@@ -123,7 +112,7 @@ function fillTable() {
         striped: true,
         pagination: true,
         singleSelect: false,
-        search: true,
+        search: false,
         showRefresh: true,
         sidePagination: "client",
         silent: true,
@@ -131,24 +120,18 @@ function fillTable() {
             return "请稍等，正在加载中...";
         },
         columns: [{
-            field: 'fileId',
-            title: '文件id',
-            visible: false
+            "align": 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
         }, {
-            field: 'fileDescription',
-            title: '文件描述',
-            align: 'center',
-            // editable: {
-            //     type: 'text',
-            //     title: '文件描述',
-            //     validate: function (value) {
-            //         let dvalue = $.trim(value);
-            //         if (!dvalue) {
-            //             return '必须填入，不能放空！';
-            //         }
-
-            //     }
-            // },
+            "field": 'fileId',
+            "title": '文件id',
+            "visible": false
+        }, {
+            "field": 'fileDescription',
+            "title": '文件描述',
+            "align": 'center',
             formatter: function (value, row, index) {
                 if (!value) {
                     value = '点击输入文件描述'
@@ -158,13 +141,21 @@ function fillTable() {
                 }
             }
         }, {
-            field: 'fileName',
-            align: 'center',
-            title: '文件名'
+            "field": 'fileName',
+            "align": 'center',
+            "title": '文件名'
         }, {
-            field: 'fileStatus',
-            align: 'center',
-            title: '文件状态',
+            "field": 'uploadTime',
+            "align": 'center',
+            "title": '上传时间'
+        }, {
+            "field": 'fileOK',
+            "title": '是否完成',
+            "visible": false
+        }, {
+            "field": 'fileStatus',
+            "align": 'center',
+            "title": '文件状态',
             formatter: function (value, row, index) {
                 if (!value) {
                     var strHtml = '待上传';
@@ -174,18 +165,15 @@ function fillTable() {
                 }
             }
         }, {
-            field: 'fileFeedback',
-            align: 'center',
-            title: '管理员反馈'
+            "field": 'fileFeedback',
+            "align": 'center',
+            "title": '管理员反馈'
         }, {
-            field: 'opera',
-            align: 'center',
-            title: '操作',
+            "field": 'opera',
+            "align": 'center',
+            "title": '操作',
             formatter: actionFormatter
         }],
-        // onEditableSave: function (field, row, oldValue, $el) {
-        //     console.log(field)
-        // },
         onClickRow: function (row, $element) {
             clickEle = $element;
             clickRowId = row.fileId;
@@ -199,13 +187,13 @@ function actionFormatter(value, row, index) {
     if (row.fileStatus == "审核中") {
         return "审核中"
         // return ' <label class="btn btn-primary btn-xs " id="choseFIle' + index + '" for="modifyFile' + index + '">选择文件</label><input type="file" class="choseFilew" name="modifyFile' + '-' + index + '" id="modifyFile' + index + '" style="display:none;"><button class="btn btn-success btn-xs upload-btn" id="uploadBtn' + index + '" >上传</button>';
+    } else if (row.fileStatus == "已通过") {
+        return "审核通过"
+        // return ' <label class="btn btn-primary btn-xs " id="choseFIle' + index + '" for="modifyFile' + index + '">选择文件</label><input type="file" class="choseFilew" name="modifyFile' + '-' + index + '" id="modifyFile' + index + '" style="display:none;"><button class="btn btn-success btn-xs upload-btn" id="uploadBtn' + index + '" >上传</button>';
     } else {
-        return ' <label class="btn btn-primary btn-xs " id="choseFIle' + index + '" for="modifyFile' + index + '">选择文件</label><input type="file" class="choseFilew" name="modifyFile' + '-' + index + '" id="modifyFile' + index + '" style="display:none;"><button class="btn btn-success btn-xs upload-btn" id="uploadBtn' + index + '" >上传</button><button class="btn-deletew btn btn-danger btn-xs" id="deleteBtn' + index + '" >删除</button>';
+        return ' <label class="btn btn-success btn-xs chose-file" id="choseFIle' + index + '" for="modifyFile' + index + '">上传</label><input type="file" class="choseFilew" name="modifyFile' + '-' + index + '" id="modifyFile' + index + '" style="display:none;"><button class="btn-deletew btn btn-danger btn-xs" id="deleteBtn' + index + '" >删除</button>';
     }
 }
-
-
-//监听表格点击
 
 //监听表格点击
 $("#table").on('click', function (e) {
@@ -238,84 +226,95 @@ $("#table").on('click', function (e) {
                 }
             });
         }
-        if (e.target.innerText == "上传") {
-            let curClickIndex = e.target.parentNode.parentNode.dataset.index
-            console.log("上传", currentStepName, $("#modifyFile" + curClickIndex).val(), clickRowDes);
-            if ($("#modifyFile" + curClickIndex).val().trim() ) {
-                $.ajax({
-                    type: "POST",
-                    url: "",
-                    data: {
-                        filePath: $("#modifyFile" + curClickIndex).val(),
-                        stepName: currentStepName,
-                        fileDes: clickRowDes
-                    },
-                    cache: false,
-                    success: function (data) {
-                        console.log("上传成功");
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log("上传失败");
-                    }
-                });
-            } else {
-                    alert("未选择文件");
-            }
-        }
     }
 })
-
 //上传文件框有变化时更新表格
 $("#table").on('change', function (e) {
     if (e.target && e.target.nodeName == "INPUT" && e.target.className.indexOf("choseFilew") >= 0) {
-        clickEle[0].children[1].innerHTML = $("#" + clickInput).val().substring($("#" + clickInput).val().toString().lastIndexOf("\\") + 1, $("#" + clickInput).val().length);
+        clickEle[0].children[2].innerHTML = $("#" + clickInput).val().substring($("#" + clickInput).val().toString().lastIndexOf("\\") + 1, $("#" + clickInput).val().length);
+        var curClickIndex = e.target.parentNode.parentNode.dataset.index
+        var mydate = new Date();
+        var t = mydate.toLocaleString().toString();
+        clickEle[0].children[3].innerHTML = t
+        uploadFile($("#modifyFile" + curClickIndex).val(), t, clickRowDes)
     }
 })
+
+
+/**
+ * 上传文件
+ * @param {any} filespath 
+ * @param {any} updateTime 
+ * @param {any} upfilrDes 
+ */
+var uploadFile = function (filespath, updateTime, upfileDes) {
+    console.log("上传", currentStepName, updateTime, filespath, upfileDes);
+    $.ajax({
+        url: "",
+        type: "POST",
+        data: {
+            filePath: filespath,
+            stepName: currentStepName,
+            fileDes: upfileDes,
+            fileUploadTime: updateTime
+        },
+        cache: false,
+        success: function (data) {
+            console.log("上传成功");
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("上传失败");
+            fillTable();
+        }
+    });
+}
 //上一步
-$("#stepPre").click(function () {
-    jump = true
-    if (currentStep == 1) {
-        console.log("end ,maybe Previous stage")
-    } else {
-        currentStep--
-        renderSteps()
-    }
+$("#stepPre").on('click', function () {
+
 })
 //下一步
-$("#stepNext").click(function () {
-    jump = true
-    if (totalStep == currentStep) {
-        console.log("end ,maybe next stage")
-    } else if (currentStep < parseInt(completeStep) + 1) {
-        currentStep++
-        renderSteps()
-    }
+$("#stepNext").on('click', function () {
+
 })
 
 //添加按钮
-$("#addItem").on('click', function () {
-    var inputContent = $("#addItemContent").val().trim()
-    if (inputContent != "") {
-        var mydate = new Date();
-        var t = mydate.toLocaleString() + mydate.getMilliseconds()
-        $('#table').bootstrapTable('insertRow', {
-            index: 0,
-            row: {
-                fileId: t.replace(/:/g, '').replace(/\s/g, "").replace(/-/g, ""),
-                fileDescription: inputContent,
-                fileName: '',
-                fileStatus: '',
-                fileFeedback: '',
-                opera: ''
-            }
+$("#addFileInput").on('change', function () {
+    var mydate = new Date();
+    var te = mydate.toLocaleString()
+    var fid = te.replace(/:/g, '').replace(/\s/g, "").replace(/-/g, "");
+    var addfilei = $("#addFileInput").val()
+    var addFileName = addfilei.substring(addfilei.toString().lastIndexOf("\\") + 1, addfilei.length);
+    $('#table').bootstrapTable('append', {
+        fileId: fid,
+        fileDescription: currentFileDes,
+        fileName: addFileName,
+        uploadTime: te,
+        fileStatus: "",
+        fileFeedback: "",
+        opera: ""
+    });
+    uploadFile(addfilei, te.toString(), currentFileDes)
+})
+
+var filter = false;
+//过滤
+$("#showAllItem").on('click', function () {
+    if (!filter) {
+        $("#showAllItem").html("显示全部");
+        filter = true;
+        $('#table').bootstrapTable('filterBy', {
+            fileOK: false
         });
-        $("#addItemContent").val("")
     } else {
-        alert("请输入文件描述")
-        $("#addItemContent").focus()
+        $("#showAllItem").html("只显示未通过的");
+        filter = false;
+        $('#table').bootstrapTable('filterBy', {});
     }
 })
 
-window.onload = function () {
-    loadStepsData()
-}
+$(function () {
+    loadStepsData();
+    $('#navHidden').on('click', function () {
+        $('#navBox').hide();
+    })
+})

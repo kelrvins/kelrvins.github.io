@@ -10,17 +10,180 @@
     zoom: 1
 }
 
-.div-center {
+
+/* nav */
+
+body {
+    background-color: #f4f3ef;
+}
+
+.nav-box {
+    background-color: #fff;
+    background-size: cover;
+    position: fixed;
+    left: 0;
+    max-height: none;
+    min-height: 100%;
+    /* overflow: hidden; */
+    width: 260px;
+    border-right: 1px solid #ddd;
+}
+
+.logo {
+    width: 85%;
+    height: 75px;
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: 1px solid #d1d0ce;
+    font-size: 20px;
+    line-height: 75px;
+    color: #7d615b;
+}
+
+.nav {
+    width: 80%;
+    margin: 20px auto 0;
+}
+
+.nav li {
+    margin: 10px 0;
+    list-style-type: none;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.nav .glyphicon {
+    margin-right: 10px;
+}
+
+.nav li a {
+    color: #94908c;
+    display: block;
+}
+
+.nav .cur .nav-name {
+    color: #eb5e28;
+}
+
+.nav .cur .glyphicon {
+    color: #eb5e28;
+}
+
+.nav li a:hover {
+    background-color: transparent;
+}
+
+.nav-name {
+    font-size: 16px;
+}
+
+.nav .nav-hidden {
+    position: fixed;
+    bottom: 0;
+}
+
+.triangle_border_left {
+    width: 0;
+    height: 0;
+    border-width: 20px 20px 20px 0;
+    border-style: solid;
+    border-color: transparent #ddd transparent transparent;
+    /* margin:40px auto; */
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    top: 1px;
+    right: -27px;
+    z-index: 999;
+}
+
+.triangle_border_left span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 18px 18px 18px 0;
+    border-style: solid;
+    border-color: transparent #f4f3ef transparent transparent;
+    position: absolute;
+    top: -18px;
+    left: 2px;
+}
+
+
+/* nav end*/
+
+
+/*container*/
+
+.container-box {
+    margin-left: 260px;
+    height: 100%;
+    padding: 0 10px;
+}
+
+
+/* head */
+
+.head {
+    height: 75px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tag {
+    float: left;
+    height: 75px;
+    line-height: 75px;
+    font-size: 18px;
+    margin-left: 10px;
+    color: #777777;
+}
+
+.setting {
+    float: right;
+    font-size: 18px;
+    line-height: 75px;
+}
+
+.setting button {
+    cursor: pointer;
+}
+
+.setting .badge {
+    margin-left: 10px;
+}
+
+
+/* head end*/
+
+.white-box {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 3px 3px #bebebe;
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 100%;
+}
+
+
+/*container end */
+
+.table-wrap {
+    min-width: 800px;
+    background: #fff;
+    margin-left: 280px;
 }
 
 
 /*进度条*/
 
 .progress-show {
-    border-bottom: 1px solid #444;
+    margin: 20px 0;
+    padding: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px #bebebe;
+    background: #fff;
 }
 
 .group-list {
@@ -41,6 +204,7 @@
 .one-group {
     text-align: center;
     cursor: pointer;
+    z-index: 2;
     color: #000;
     text-decoration: none
 }
@@ -69,7 +233,7 @@
     /*border-radius: 0.2rem;
     background-color: #3879d9;*/
     margin-top: 6px;
-    z-index: -1;
+    z-index: 1;
 }
 
 .progress {
@@ -79,63 +243,75 @@
 .text-hidden {
     visibility: hidden
 }
+
+
 /*进度条 end*/
 
 
 /*注意事项*/
 
-.notice-content {
-    padding: 1rem;
-}
-
-.notice-text-title {
+.title-content {
     margin: 0;
-    font-weight: bold
+    float: left;
 }
 
-.notice-text {
-    color: #f00;
+.title-text-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.title-text {
+    color: #848484;
+    padding: 10px 10px 0;
 }
 
 
 /*注意事项 end*/
 
 
-/*补充意见*/
-
-.add-comments {
-    background: #fcf8e3;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.2rem;
-    margin-top: 1rem;
-}
-.add-comments-title{
-    font-weight: bold
-}
-
-.add-comments-title, .add-comments-text {
-    padding: 0;
-}
-
-
-/*补充意见 end*/
-
 
 /*表格*/
 
+td {
+    max-width: 200px;
+    vertical-align: middle !important;
+}
+
+.table-height {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px #bebebe;
+}
+
 .add-item-wrap {
     float: right !important;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
+    padding-top: 10px;
+}
+
+.show-all-btn {
+    margin-right: 10px;
 }
 
 .add-item {
     color: #5cb85c;
 }
 
-.upload-btn {
-    margin: 0 0.3rem;
+.chose-file {
+    margin-right: 10px;
 }
 
+
 /*表格 end*/
+
+.step-center {
+    position: absolute;
+    left: calc(50% + 151px);
+    transform: translate(-50%, 0%);
+}
+
+.step-pre {
+    margin-right: 15px;
+}
