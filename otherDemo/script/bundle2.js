@@ -9,7 +9,6 @@ let steps, //步骤json
     clickRowId, //被点击行元素的fileid
     clickRowDes //被点击行元素的描述
 
-
 //加载步骤数据
 function loadStepsData() {
     $.ajax({
