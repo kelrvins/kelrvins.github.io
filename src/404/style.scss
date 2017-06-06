@@ -1,0 +1,26 @@
+.page404 {
+  span {
+    display: block;
+    font-size: 80px;
+    background-size: 200% 100%;
+    background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: stream 2s infinite linear;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@keyframes stream {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

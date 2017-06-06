@@ -1,0 +1,41 @@
+.radioWrap {
+  width: 50%;
+  margin: 5rem auto;
+  .wgroup:not(:first-child) {
+    margin-top: 5px;
+  }
+  .wgroup {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .group-title {
+    background: #f5f5f5;
+    padding: 9px;
+  }
+  .groupcontent {
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s;
+  }
+  .grouptext {
+    padding: 15px;
+  }
+  .ra-c {
+    display: none;
+  }
+  .ralabel:hover {
+    text-decoration: underline;
+  }
+  .ralabel {
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #f5f5f5;
+    cursor: pointer
+  }
+  .ra-c:checked~.groupcontent {
+    max-height: 300px;
+  }
+}

@@ -1,0 +1,56 @@
+.moveBlock-wrap {
+    text-align: center;
+    margin: 1rem auto;
+    position: relative;
+    width: 500px;
+    ul{
+        padding: 0;
+        margin: 0;
+    }
+    ul.box {
+        list-style: none;
+        width: 500px;
+        height: 500px;
+        border: 1px solid #aaa;
+    }
+    .box li {
+        float: left;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        transition: .5s;
+        border: 1px solid #aaa;
+    }
+    .box:after {
+        content: "";
+        height: 0;
+        visibility: hidden;
+        clear: both;
+        display: block;
+    }
+    .moveinput {
+        line-height: 33px;
+        border-radius: 3px;
+        border: 1px solid #aaa;
+        padding-left: 10px;
+    }
+    .movebtn {
+        padding: 0.5rem 1rem;
+        border: 1px solid #aaa;
+        background: #fff;
+        border-radius: 0.2rem;
+    }
+    ol li {
+        text-align: left;
+    }
+    .moveBlock {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        background: #dc378a;
+        position: absolute;
+        border-top: 9px solid #ff4900;
+        transform: rotate(0deg);
+        transition: .5s;
+    }
+}

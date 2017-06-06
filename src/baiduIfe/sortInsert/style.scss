@@ -1,0 +1,38 @@
+.sort-insert {
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+        height: 11rem;
+    }
+    li {
+        list-style: none;
+        margin: 0.1rem 0.2rem 0 0;
+        width: 1.5rem;
+        min-height: 1rem;
+        text-align: center;
+        vertical-align: top;
+        color: #fff;
+        background: #f00;
+    }
+    .buttons input,
+    .se-btn {
+        background: #fff;
+        padding: 3px 13px;
+        line-height: 30px;
+        border: 1px #aaa solid;
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px #ddd;
+        cursor: pointer;
+    }
+    .se-wrap {
+        text-align: center;
+    }
+    .se-input {
+        line-height: 1.9rem;
+        border-radius: 2px;
+        padding-left: 10px;
+        border: 1px #aaa solid;
+    }
+}

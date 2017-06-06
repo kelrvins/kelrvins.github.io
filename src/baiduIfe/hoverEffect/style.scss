@@ -1,0 +1,111 @@
+.hoverEffect {
+    width: 800px;
+    height: 490px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    .bg {
+        background: url(genji.png);
+        background-size: cover;
+        width: 100%;
+        position: absolute;
+        transform: scale(1);
+        height: 100%;
+        transition: all .1s;
+    }
+    &:hover .bg {
+        transform: scale(1.3);
+        transition: all 1s;
+        filter: blur(10px);
+    }
+    &:hover .container1 {
+        opacity: 1;
+        visibility: visible;
+    }
+    &:hover .container1::before {
+        height: 100%;
+        visibility: visible;
+        top: 0;
+    }
+    &:hover .container1::after {
+        width: 100%;
+        visibility: visible;
+        left: 0;
+    }
+    .container1 {
+        opacity: 0;
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        transition: opacity .5s;
+        p {
+            margin-top: 100px;
+            font-weight: bold;
+            font-size: 3rem;
+            background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: stream 4s infinite linear;
+            transform: translateY(20px);
+            text-align: center;
+        }
+        span {
+            display: block;
+            padding-top: 40px;
+            font-size: 2rem;
+            background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: stream 4s infinite linear;
+            transform: translateY(20px);
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 0;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            border: 3px solid ghostwhite;
+            border-width: 0 3px;
+            visibility: hidden;
+            box-sizing: border-box;
+            transition: all .5s;
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border: 3px solid ghostwhite;
+            border-width: 3px 0;
+            visibility: hidden;
+            box-sizing: border-box;
+            transition: all .5s;
+        }
+    }
+}
+
+@keyframes stream {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}

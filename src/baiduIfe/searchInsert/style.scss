@@ -1,0 +1,76 @@
+.clear:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clear {
+    /* 触发 hasLayout */
+    zoom: 1;
+}
+
+.search-insert-wrap {
+    .blocks {
+        text-align: center;
+        margin: 0 auto;
+    }
+    textarea {
+        display: block;
+        border: 1px #aaa solid;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 25px;
+        margin: 0 auto;
+    }
+    .buttons {
+        padding: 10px;
+        text-align: center;
+    }
+    .buttons input,
+    .se-btn {
+        background: #fff;
+        width: 70px;
+        line-height: 30px;
+        border: 1px #aaa solid;
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px #ddd;
+        cursor: pointer;
+    }
+    #sorts {
+        text-align: center;
+        padding: 0;
+    }
+    .showli {
+        border: 1px #4473f7 solid;
+    }
+    li {
+        display: inline-block;
+        list-style: none;
+        margin: 0.1rem 0.2rem;
+        padding: 0 25px;
+        line-height: 2.5rem;
+        border: 1px #aaa solid;
+        font-size: 1.3rem;
+        border-radius: 5px;
+        text-align: center;
+    }
+    li span {
+        color: #f00;
+    }
+    #notice {
+        color: #f00;
+        font-size: 20px;
+        text-align: center;
+    }
+    .se-wrap {
+        text-align: center;
+    }
+    .se-input {
+        line-height: 1.9rem;
+        border-radius: 2px;
+        padding-left: 10px;
+        border: 1px #aaa solid;
+    }
+}
