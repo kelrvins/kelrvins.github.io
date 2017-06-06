@@ -115,7 +115,7 @@ let songdata = [{
     "songid": 1,
     "songname": "程璧 - 花房姑娘",
     "like": "",
-    "songpath": "./songdata/程璧 - 花房姑娘.mp3"
+    "songpath": "http://114.236.140.73/m10.music.126.net/20170606141731/20cb33e580ded6befe872a64d2cd0c19/ymusic/4a2c/c48f/a02f/a98fdc484f724e43a9845765d89b38fd.mp3?wshc_tag=0&wsts_tag=5936444b&wsid_tag=314a7cdd&wsiphost=ipdbm"
 }]
 
 let currentPlay = 1,
