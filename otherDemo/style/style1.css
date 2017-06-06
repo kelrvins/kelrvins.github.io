@@ -1,0 +1,139 @@
+html {
+    font-size: 10px
+}
+
+@media screen and (min-width:480px) and (max-width:639px) {
+    html {
+        font-size: 15px
+    }
+}
+
+@media screen and (min-width:640px) and (max-width:719px) {
+    html {
+        font-size: 20px
+    }
+}
+
+@media screen and (min-width:720px) and (max-width:749px) {
+    html {
+        font-size: 22.5px
+    }
+}
+
+@media screen and (min-width:750px) and (max-width:799px) {
+    html {
+        font-size: 23.5px
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:959px) {
+    html {
+        font-size: 25px
+    }
+}
+
+@media screen and (min-width:960px) and (max-width:1079px) {
+    html {
+        font-size: 30px
+    }
+}
+
+@media screen and (min-width:1080px) {
+    html {
+        font-size: 32px
+    }
+}
+
+
+/*.header-top{
+  position: fixed;
+  height: 4.5rem;
+  width: 100%;
+  background: #000;
+}*/
+
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(246, 246, 246, 0.26);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px -3px 17px 0px #a79a9a;
+    z-index: 100;
+}
+
+.header-date-time {
+    display: inline-block;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3rem;
+    padding: 0 0.5rem;
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+    margin: 0 0 0 1rem;
+}
+
+.i-like {
+    display: inline-block;
+    margin: 0;
+    margin-right: 2rem;
+    line-height: 3rem;
+    font-size: 2rem;
+    color: #000;
+    text-decoration: none
+}
+
+.like-F00{
+    color: #f00;
+}
+.article {
+    /*position: fixed;*/
+    width: 100%;
+    height: calc(100% - 5rem);
+    /*overflow-y: scroll;*/
+    background: #f6f6f6;
+    padding-top: 4.5rem;
+}
+
+.date-show {
+    width: 6rem;
+    color: #fff;
+    text-align: center;
+    padding: 0.3rem;
+    margin: 1rem auto;
+    background: #1d87fc;
+    border-radius: 0.3rem;
+}
+
+.pix-block {
+    margin-bottom: 2rem;
+    background: #fff;
+    box-shadow: 15px 2px 17px 0px #a79a9a;
+}
+
+.pix-block img {
+    width: 100%;
+    background: url("http://i1.piimg.com/588926/9723f12607f59ed0.gif") no-repeat center
+}
+
+.pix-opera {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pix-opera p {
+    display: inline-block;
+}
+
+.pix-content {
+    margin: 0 0 0 0.5rem;
+    line-height: 3rem;
+}
+
+.pix-like {
+    margin-right: 0.5rem;
+    font-size: 2rem;
+    margin: 0 1rem 0 0;
+    line-height: 3rem;
+}

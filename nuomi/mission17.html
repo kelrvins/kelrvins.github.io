@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标悬浮模糊效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #111;
+        }
+
+        .wrap {
+            width: 800px;
+            height: 490px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        .wrap .bg {
+            background: url(files/img/genji.png);
+            background-size: cover;
+            width: 100%;
+            position: absolute;
+            transform: scale(1);
+            height: 100%;
+            transition: all .1s;
+        }
+
+        .container {
+            opacity: 0;
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: opacity .5s;
+        }
+
+        .container p {
+            margin-top: 100px;
+            font-weight: bold;
+            font-size: 3rem;
+            background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: stream 4s infinite linear;
+            transform: translateY(20px);
+            text-align: center;
+        }
+
+        .container span {
+            display: block;
+            padding-top: 40px;
+            font-size: 2rem;
+            background-size: 200% 100%;
+            background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: stream 4s infinite linear;
+            transform: translateY(20px); 
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 0;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            border: 3px solid ghostwhite;
+            border-width: 0 3px;
+            visibility: hidden;
+            box-sizing: border-box;
+            transition: all .5s;
+        }
+
+        .container::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border: 3px solid ghostwhite;
+            border-width: 3px 0;
+            visibility: hidden;
+            box-sizing: border-box;
+            transition: all .5s;
+        }
+
+        .wrap:hover .bg {
+            transform: scale(1.3);
+            transition: all 1s;
+            filter: blur(10px);
+        }
+
+        .wrap:hover .container {
+            opacity: 1;
+            visibility: visible;
+        }
+        .wrap:hover .container::before {
+            height: 100%;
+            visibility: visible;
+            top:0;
+        }
+        .wrap:hover .container::after {
+            width: 100%;
+            visibility: visible;
+            left: 0;
+        }
+
+
+        @keyframes stream {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -100% 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="bg"></div>
+        <div class="container">
+            <p>不得了了赶紧跑</p>
+            <span>翻新航母，潜艇抛光，卫星除尘，核弹保养</span>
+        </div>
+    </div>
+</body>
+
+</html>

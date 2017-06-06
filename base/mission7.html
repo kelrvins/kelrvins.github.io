@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ife-mission 7</title>
+    <style>
+        .BTWrap {
+            border: 1px #000 solid;
+            width: 50%;
+            height: 20rem;
+            margin: 0 auto;
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            background: #fff;
+        }
+        
+        .BTWrap div {
+            align-items: center;
+            display: flex;
+            padding: 20px;
+            border: 1px #aaa solid;
+            height: 90%;
+            flex-grow: 1;
+            background: #fff;
+            margin: 0 10px;
+            border-radius: 3px;
+        }
+        
+        input {
+            background: #fff;
+            width: 70px;
+            line-height: 30px;
+            border: 1px #aaa solid;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px #ddd;
+            margin: 0 1rem;
+            border-radius: 3px;
+        }
+        
+        fieldset {
+            margin: 1rem 0;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="BTWrap" id="btWrap">
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <fieldset>
+        <input type="button" value="先序遍历" id="pre" />
+        <input type="button" value="中序遍历" id="inp" />
+        <input type="button" value="后序遍历" id="post" />
+    </fieldset>
+</body>
+<script>
+    let btWrap = document.getElementById("btWrap"),
+
+        inp = document.getElementById("inp"),
+        post = document.getElementById("post"),
+        pre = document.getElementById("pre"),
+        inputs = document.getElementsByTagName("input"),
+        node = document.getElementsByTagName("div"),
+        data = [];
+    //设置按钮不可用
+    function setDisabledT() {
+        console.log("setT");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = "disabled";
+        }
+    }
+
+    //设置按钮可用
+    function setDisabledF() {
+        console.log("setF");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute('disabled');
+        }
+    }
+
+    //重置颜色和数组
+    function resets() {
+        data = [];
+    }
+    //染色
+    function coloring() {
+        setDisabledT();
+        let i = 1;
+        console.log(data.length);
+        data[0].style.backgroundColor = '#f00'
+        data[0].style.color = '#fff'
+        var time = setInterval(function () {
+            if (i < data.length) {
+                data[i - 1].style.backgroundColor = '#fff'
+                data[i - 1].style.color = '#000'
+                console.log("color");
+                data[i].style.backgroundColor = '#f00'
+        data[i].style.color = '#fff'
+                i++
+            } else {
+                data[i - 1].style.backgroundColor = '#fff'
+        data[i-1].style.color = '#fff'
+                setDisabledF();
+                clearInterval(time)
+            }
+        }, 200)
+    }
+    //前序
+    function PreOrder(x) {
+        if (!(x == null)) {
+            data.push(x)
+            PreOrder(x.firstElementChild)
+            PreOrder(x.lastElementChild)
+        }
+    }
+    //中序
+    function inOrder(x) {
+        if (!(x == null)) {
+            inOrder(x.firstElementChild)
+            data.push(x)
+            inOrder(x.lastElementChild)
+        }
+    }
+    //后序
+    function postOrder(x) {
+        if (!(x == null)) {
+            postOrder(x.firstElementChild)
+            postOrder(x.lastElementChild)
+            data.push(x)
+        }
+    }
+
+    function init() {
+        pre.addEventListener("click", function () {
+            resets();
+            PreOrder(btWrap);
+            coloring();
+        });
+        inp.addEventListener("click", function () {
+            resets();
+            inOrder(btWrap);
+            coloring();
+        });
+        post.addEventListener("click", function () {
+            resets();
+            postOrder(btWrap);
+            coloring();
+        });
+    }
+    init();
+</script>
+
+</html>

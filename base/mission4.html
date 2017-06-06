@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ife -mission 4</title>
+    <meta charset="UTF-8">
+    <style>
+        .clear:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clear {
+            /* 触发 hasLayout */
+            zoom: 1;
+        }
+        
+        .blocks {
+            min-width: 20rem;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        textarea {
+            display: block;
+            border: 1px #aaa solid;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .buttons {
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .buttons input {
+            background: #fff;
+               padding: 7px 20px;
+            line-height: 30px;
+            border: 1px #aaa solid;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px #ddd;
+            ;
+        }
+        
+        #sorts {
+            text-align: center;
+            padding: 0;
+            min-height: 45px;
+        }
+        
+        li {
+            display: inline-block;
+            list-style: none;
+            margin: 0.1rem 0.2rem;
+            padding: 0 25px;
+            line-height: 2.5rem;
+            border: 1px #aaa solid;
+            font-size: 1.3rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        #notice {
+            color: #f00;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clear blocks">
+        <ul id="sorts" class="clear"></ul>
+    </div>
+    <div class="buttons">
+        <input type="button" name="insert-left" id="insert-left" value="左侧入" />
+        <input type="button" name="insert-left" id="insert-right" value="右侧入" />
+        <input type="button" name="insert-left" id="out-left" value="左侧出" />
+        <input type="button" name="insert-left" id="out-right" value="右侧出" />
+    </div>
+    <textarea rows="10" cols="50" id="source"></textarea>
+    <p id="notice"></p>
+    <script>
+        let data = [5, 12, 5];
+
+        let source = document.getElementById("source"),
+            inLef = document.getElementById("insert-left"),
+            inRig = document.getElementById("insert-right"),
+            outLef = document.getElementById("out-left"),
+            outRig = document.getElementById("out-right"),
+            sorts = document.getElementById("sorts"),
+            lis = document.getElementsByTagName("li"),
+            notice = document.getElementById("notice");
+
+        function render() {
+            console.log(data);
+            removeAllChild(sorts);
+            for (let i = 0; i < data.length; i++) {
+                const cont = document.createElement('li');
+                cont.innerHTML = data[i];
+                console.log(cont);
+                sorts.appendChild(cont);
+            }
+        }
+
+        function removeAllChild(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild);
+            }
+        }
+
+
+        function init() {
+            render();
+            inLef.addEventListener("click", function () {
+                if (source.value.trim() != "") {
+                    data.unshift(source.value);
+                    source.value = "";
+                    source.focus();
+                    render();
+                } else {
+                    notice.innerHTML = "请正确输入";
+                }
+            }, false);
+            inRig.addEventListener("click", function () {
+                if (source.value.trim() != "") {
+                    data.push(source.value);
+                    source.value = "";
+                    source.focus();
+                    render();
+                } else {
+                    notice.innerHTML = "请正确输入";
+                }
+            }, false);
+            outLef.addEventListener("click", function () {
+                if (data.length - 1 < 0) {
+                    notice.innerHTML = "空了。";
+                } else {
+                    data.shift();
+                    render();
+                }
+            }, false);
+            outRig.addEventListener("click", function () {
+                if (data.length - 1 < 0) {
+                    notice.innerHTML = "空了。";
+                } else {
+                    data.pop();
+                    render();
+                }
+            }, false);
+            sorts.addEventListener('click', function (e) {
+                   var whoClick= [].indexOf.call(lis, e.target);
+                   console.log(whoClick);
+                   data.splice(whoClick,1);
+                   render();
+            })
+
+        }
+        init();
+    </script>
+</body>
+
+</html>
